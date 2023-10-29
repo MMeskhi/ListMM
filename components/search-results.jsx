@@ -1,10 +1,15 @@
 import Image from "next/image";
 
-export default function SearchResults({ results }) {
+export default function SearchResults({ results, onMovieClick }) {
+  // add new prop onMovieClick
   return (
-    <div className="grid grid-cols-fluid gap-4">
+    <div className="grid grid-cols-fluid">
       {results.map((movie) => (
-        <div key={movie.id} className="w-32 h-42">
+        <div
+          key={movie.id}
+          className="w-32 h-42"
+          onClick={() => onMovieClick(movie)}
+        >
           <Image
             src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
             alt={movie.title}

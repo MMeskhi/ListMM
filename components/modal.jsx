@@ -1,4 +1,3 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -12,7 +11,7 @@ import {
 
 import Movies from "./movies";
 
-export function Modal() {
+export function Modal({ setSelectedMovies }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -24,7 +23,7 @@ export function Modal() {
         </DialogHeader>
         <div className="flex items-center space-x-2">
           <div className="grid flex-1 gap-2">
-            <Movies />
+            <Movies setSelectedMovies={setSelectedMovies} />
           </div>
         </div>
         <DialogFooter className="sm:justify-start">
