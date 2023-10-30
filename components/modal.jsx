@@ -9,21 +9,23 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import Movies from "./movies";
+import MoviesAdd from "./movies-add";
 
 export function Modal({ setSelectedMovies }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Add</Button>
+        <Button variant="outline" size="sm">
+          Add
+        </Button>
       </DialogTrigger>
-      <DialogContent className="overflow-y-scroll max-h-[88vh] !w-10/12 max-w-none">
+      <DialogContent className="overflow-y-scroll max-h-[80vh] !w-fit max-w-none">
         <DialogHeader>
           <DialogTitle>Find The Movie</DialogTitle>
         </DialogHeader>
         <div className="flex items-center space-x-2">
           <div className="grid flex-1 gap-2">
-            <Movies setSelectedMovies={setSelectedMovies} />
+            <MoviesAdd setSelectedMovies={setSelectedMovies} />
           </div>
         </div>
         <DialogFooter className="sm:justify-start">
