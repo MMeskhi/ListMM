@@ -13,7 +13,7 @@ export default function MovieList({ movies }) {
               alt={movie.title}
               width={200}
               height={200}
-              className="w-40"
+              className="object-cover w-28 h-[160px] rounded-sm"
             />
             <h2 className="truncate text-slate-200">{movie.title}</h2>
           </div>

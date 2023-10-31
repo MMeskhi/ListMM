@@ -16,7 +16,7 @@ export default function SearchResults({ results, onMovieClick }) {
               alt={movie.title}
               width={200}
               height={200}
-              className="object-cover w-26 h-[188px]"
+              className="object-cover w-28 h-[160px] rounded-sm"
             />
             <h2 className="truncate">{movie.title}</h2>
           </div>
