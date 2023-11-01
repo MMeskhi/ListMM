@@ -2,9 +2,9 @@ import "./globals.css";
 import { GeistSans } from "geist/font";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
-import { ToastContainer } from "react-toastify";
 import constructMetadata from "@/lib/utils";
-import { NextAuthProvider } from "./providers";
+import { getServerSession } from "next-auth";
+import { NextAuthProvider } from "@/app/providers";
 
 export const metadata = constructMetadata();
 
@@ -12,24 +12,19 @@ export const viewport = {
   themeColor: "#171717",
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession();
+
   return (
     <html lang="en">
       <body
-        className={`${GeistSans.className} font-semibold flex min-h-screen flex-col justify-between px-8 bg-neutral-900`}
+        className={`${GeistSans.className} font-semibold flex min-h-screen flex-col justify-between bg-neutral-900`}
       >
-        <NextAuthProvider>
-          <ToastContainer
-            position="bottom-left"
-            autoClose={2000}
-            hideProgressBar={false}
-            closeButton={false}
-            rtl={false}
-            pauseOnFocusLoss
-            theme="dark"
-          />
+        <NextAuthProvider session={session}>
           <Navbar />
-          {children}
+          <main className="container mx-auto max-w-screen-2xl flex-1 h-full">
+            {children}
+          </main>
           <Footer />
         </NextAuthProvider>
       </body>

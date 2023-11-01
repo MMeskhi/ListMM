@@ -1,5 +1,19 @@
-import MainLayout from "@/components/mainLayout";
+import ListBoard from "@/components/listBoard";
+import { ToastContainer } from "react-toastify";
 
 export default function ListsLayout({ children }) {
-  return <MainLayout>{children}</MainLayout>;
+  return (
+    <>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={2000}
+        hideProgressBar={false}
+        closeButton={false}
+        rtl={false}
+        pauseOnFocusLoss
+        theme="dark"
+      />
+      <ListBoard>{children}</ListBoard>;
+    </>
+  );
 }
