@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function MovieList({ movies }) {
   return (
-    <div className="mt-8 h-full grid grid-cols-fluid">
+    <div className="mt-8 h-full flex gap-4 flex-wrap">
       {movies &&
         movies.map((movie) => (
           <div key={movie.id}>
@@ -15,7 +15,7 @@ export default function MovieList({ movies }) {
               height={200}
               className="object-cover w-28 h-[160px] rounded-sm"
             />
-            <h2 className="truncate text-slate-200">{movie.title}</h2>
+            <h2 className="truncate text-slate-200 w-28">{movie.title}</h2>
           </div>
         ))}
     </div>

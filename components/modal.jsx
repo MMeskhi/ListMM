@@ -9,7 +9,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 
-import MoviesAdd from "./movies-add";
+import MoviesAdd from "./moviesAdd";
 
 export function Modal({ setSelectedMovies }) {
   return (
