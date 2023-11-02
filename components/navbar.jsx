@@ -11,7 +11,7 @@ export default function Navbar() {
     <header className="my-5 container mx-auto max-w-screen-2xl">
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
-          <Link href="/watch" className="text-slate-200 text-3xl">
+          <Link href="/" className="text-slate-200 text-3xl">
             ListMM
           </Link>
           <nav className="">
@@ -56,7 +56,7 @@ export default function Navbar() {
             className="flex justify-center items-center gap-2 text-slate-300 border text-lg border-slate-200 px-9 py-3 bg-slate-200 bg-opacity-5 hover:bg-opacity-0 hover:text-slate-300 hover:border-slate-300 duration-200"
           >
             Sign In
-            <AiOutlineGoogle class="text-xl text-slate-200" />
+            <AiOutlineGoogle className="text-xl text-slate-200" />
           </button>
         </div>
       )}

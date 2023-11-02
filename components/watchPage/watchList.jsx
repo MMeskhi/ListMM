@@ -2,7 +2,7 @@
 import React from "react";
 import Image from "next/image";
 
-export default function MovieList({ movies }) {
+export default function WatchList({ movies }) {
   return (
     <div className="mt-8 h-full flex gap-4 flex-wrap">
       {movies &&

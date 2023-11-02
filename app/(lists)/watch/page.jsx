@@ -1,5 +1,5 @@
 import React from "react";
-import Movies from "@/components/movies";
+import Movies from "@/components/watchPage/movies";
 import { getServerSession } from "next-auth";
 import { redirectIfNotAuthenticated } from "@/lib/session";
 

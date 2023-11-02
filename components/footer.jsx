@@ -29,7 +29,7 @@ export default function Footer() {
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
+          transition={{ delay: 1 }}
         >
           &copy; 2023 Mikheil Meskhi
         </motion.div>

@@ -1,8 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import SearchBar from "./searchBar";
-import SearchResults from "./searchResult";
-import { searchMovies } from "../lib/api";
+import SearchBar from "../searchBar";
+import SearchResults from "../searchResult";
+import { searchMovies } from "../../lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 

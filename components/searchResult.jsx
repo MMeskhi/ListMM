@@ -8,7 +8,7 @@ export default function SearchResults({ results, onMovieClick }) {
         .map((movie) => (
           <div
             key={movie.id}
-            className="w-32 h-42"
+            className="w-32 h-42 border"
             onClick={() => onMovieClick(movie)}
           >
             <Image
@@ -18,7 +18,9 @@ export default function SearchResults({ results, onMovieClick }) {
               height={200}
               className="object-cover w-28 h-[160px] rounded-sm"
             />
-            <h2 className="truncate">{movie.title}</h2>
+            <h2 className="truncate ">
+              {movie.title} ({movie.release_date.split("-")[0]})
+            </h2>
           </div>
         ))}
     </div>
