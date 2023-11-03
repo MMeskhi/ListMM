@@ -15,7 +15,7 @@ export default function WatchList({ movies }) {
               height={200}
               className="object-cover w-28 h-[160px] rounded-sm"
             />
-            <h2 className="truncate text-slate-200 w-28">{movie.title}</h2>
+            <h2 className="truncate text-gray-300 w-28">{movie.title}</h2>
           </div>
         ))}
     </div>

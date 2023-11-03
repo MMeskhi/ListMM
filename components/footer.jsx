@@ -16,7 +16,7 @@ export default function Footer() {
         whileHover="hover"
       >
         <motion.span
-          className="text-slate-200 text-sm absolute -top-36 border border-neutral-800 pl-4 pr-16 whitespace-nowrap py-3 bg-neutral-800 bg-opacity-80 rounded-md backdrop-blur-lg shadow-sm space-y-2 [&>*]:flex [&>*]:items-center [&>p>svg]:mr-2 pointer-events-none"
+          className="text-gray-300 text-sm absolute -top-36 border border-neutral-800 pl-4 pr-16 whitespace-nowrap py-3 bg-neutral-800 bg-opacity-80 rounded-md backdrop-blur-lg shadow-sm space-y-2 [&>*]:flex [&>*]:items-center [&>p>svg]:mr-2 pointer-events-none"
           variants={madeByBox}
         >
           <p>Next.js for code</p>
@@ -25,7 +25,7 @@ export default function Footer() {
           <p>Vercel for host</p>
         </motion.span>
         <motion.div
-          className="text-slate-300 text-opacity-95 text-center cursor-default whitespace-nowrap select-none"
+          className="text-gray-300 text-opacity-95 text-center cursor-default whitespace-nowrap select-none"
           initial={{ y: 20, opacity: 0 }}
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true }}

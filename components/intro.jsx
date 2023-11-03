@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function Intro() {
   return (
     <div className="mt-10">
-      <h1 className="text-slate-200 text-4xl flex gap-4">
+      <h1 className="text-gray-300 text-4xl flex gap-4">
         <motion.span
           initial={{ y: 40, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
