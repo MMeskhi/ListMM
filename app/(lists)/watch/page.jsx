@@ -1,12 +1,7 @@
 import React from "react";
 import Movies from "@/components/watchPage/movies";
-import { getServerSession } from "next-auth";
-import { redirectIfNotAuthenticated } from "@/lib/session";
 
-export default async function Watch() {
-  const session = await getServerSession();
-  redirectIfNotAuthenticated(session);
-
+export default function Watch() {
   return (
     <section className="">
       <Movies />

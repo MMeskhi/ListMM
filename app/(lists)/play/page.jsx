@@ -1,11 +1,6 @@
 import React from "react";
-import { getServerSession } from "next-auth";
-import { redirectIfNotAuthenticated } from "@/lib/session";
 
-export default async function Play() {
-  const session = await getServerSession();
-  redirectIfNotAuthenticated(session);
-
+export default function Play() {
   return (
     <div>
       <h2 className="text-slate-200">Coming Soon!</h2>
