@@ -3,8 +3,9 @@ import React, { useState } from "react";
 import { Modal } from "@/components/modal";
 import WatchList from "@/components/watchPage/watchList";
 
-export default function Home() {
+export default function Movies() {
   const [selectedMovies, setSelectedMovies] = useState([]);
+
   return (
     <>
       <Modal setSelectedMovies={setSelectedMovies} />
