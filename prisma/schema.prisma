@@ -54,9 +54,9 @@ model VerificationToken {
 }
 
 model Movie {
- id      String @id @default(cuid())
- title   String
- poster  String
- userId  String
- user    User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  id           String @id @default(cuid())
+  title        String
+  poster_path  String
+  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
 }

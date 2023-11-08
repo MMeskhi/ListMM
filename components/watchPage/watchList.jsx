@@ -1,8 +1,41 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
+import { useSession } from "next-auth/react";
 
-export default function WatchList({ movies }) {
+export default function WatchList() {
+  const { data: session } = useSession();
+  const [movies, setMovies] = useState([]);
+
+  useEffect(() => {
+    const fetchWatchList = async () => {
+      if (session) {
+        try {
+          const response = await fetch("/api/getWatchList", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              userId: session.user.id,
+            }),
+          });
+
+          if (response.ok) {
+            const data = await response.json();
+            setMovies(data.movies);
+          } else {
+            console.error("Failed to fetch WatchList");
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+    };
+
+    fetchWatchList();
+  }, [session]);
+
   return (
     <div className="mt-8 h-full flex gap-4 flex-wrap">
       {movies &&
