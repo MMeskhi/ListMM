@@ -1,15 +1,19 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
-export async function POST(req) {
-  const { movieId, title, poster_path, userId } = req.body;
+export async function POST(req, res) {
+  const body = await req.json();
+
+  console.log(body.body);
+
+  const { movieId, title, poster_path, userId } = body;
 
   console.log(movieId, title, poster_path, userId);
 
   try {
     const movie = await prisma.movie.create({
       data: {
-        id: movieId,
+        id: String(movieId),
         title,
         poster_path,
         userId,

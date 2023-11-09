@@ -11,7 +11,7 @@ export default function WatchList() {
     const fetchWatchList = async () => {
       if (session) {
         try {
-          const response = await fetch("/api/getWatchList", {
+          const response = await fetch("/watch/api/getWatchList", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",

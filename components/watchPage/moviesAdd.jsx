@@ -27,7 +27,7 @@ export default function MoviesAdd({ setSelectedMovies }) {
     console.log(session); // Log the session object
 
     try {
-      const response = await fetch("/api/addMoviesToList", {
+      const response = await fetch("/watch/api/addMoviesToList", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

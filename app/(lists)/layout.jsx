@@ -13,7 +13,7 @@ export default function ListsLayout({ children }) {
         pauseOnFocusLoss
         theme="dark"
       />
-      <ListBoard>{children}</ListBoard>;
+      <ListBoard>{children}</ListBoard>
     </>
   );
 }
