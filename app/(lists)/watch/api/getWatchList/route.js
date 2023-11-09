@@ -3,7 +3,11 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 export async function POST(req) {
-  const { userId } = await req.body;
+  const body = await req.json();
+
+  console.log(body.body);
+
+  const { userId } = await body;
   try {
     const movies = await prisma.movie.findMany({
       where: {
