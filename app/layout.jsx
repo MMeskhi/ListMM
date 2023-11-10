@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import constructMetadata from "@/lib/utils";
 import { getServerSession } from "next-auth";
-import { NextAuthProvider } from "@/app/providers";
+import { NextAuthProvider } from "../lib/providers";
 
 export const metadata = constructMetadata();
 

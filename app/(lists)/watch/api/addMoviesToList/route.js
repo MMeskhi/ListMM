@@ -4,11 +4,7 @@ const prisma = new PrismaClient();
 export async function POST(req) {
   const body = await req.json();
 
-  console.log(body.body);
-
   const { movieId, title, poster_path, userId } = body;
-
-  console.log(movieId, title, poster_path, userId);
 
   try {
     const movie = await prisma.movie.create({

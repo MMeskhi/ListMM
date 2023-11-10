@@ -5,8 +5,6 @@ const prisma = new PrismaClient();
 export async function POST(req) {
   const body = await req.json();
 
-  console.log(body.body);
-
   const { userId } = await body;
   try {
     const movies = await prisma.movie.findMany({
