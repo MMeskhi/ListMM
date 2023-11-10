@@ -1,10 +1,18 @@
 import "./globals.css";
-import { GeistSans } from "geist/font";
+import localFont from "next/font/local";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import constructMetadata from "@/lib/utils";
 import { getServerSession } from "next-auth";
 import { NextAuthProvider } from "../lib/providers";
+
+export const geist = localFont({
+  src: "../components/ui/fonts/GeistVariableVF.woff2",
+  variable: "--font-geist",
+  weight: "600 800",
+  display: "swap",
+  style: "normal",
+});
 
 export const metadata = constructMetadata();
 
@@ -18,7 +26,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${GeistSans.variable} font-sans font-semibold flex min-h-screen flex-col justify-between bg-gray-900`}
+        className={`${geist.variable} font-sans font-semibold flex min-h-screen flex-col justify-between bg-gray-900`}
       >
         <NextAuthProvider session={session}>
           <Navbar />
