@@ -18,7 +18,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${GeistSans.className} font-semibold flex min-h-screen flex-col justify-between bg-gray-900`}
+        className={`${GeistSans.variable} font-sans font-semibold flex min-h-screen flex-col justify-between bg-gray-900`}
       >
         <NextAuthProvider session={session}>
           <Navbar />

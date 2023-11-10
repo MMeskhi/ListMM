@@ -18,11 +18,12 @@ export default function WatchList() {
               height={100}
               className="object-cover rounded-sm border border-gray-800 shadow-sm h-[143px]"
             />
-            <h2 className="truncate text-gray-300  text-sm">
+            <h2 className="truncate text-gray-300 w-full text-sm">
               <Link
                 href={`https://letterboxd.com/tmdb/${movie.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
+                className="w-fit"
               >
                 {movie.title}
               </Link>
