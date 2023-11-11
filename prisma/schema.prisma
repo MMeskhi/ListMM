@@ -34,6 +34,14 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -45,18 +53,12 @@ model User {
   movies        Movie[]
 }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
-}
-
 model Movie {
-  id           String @id @default(cuid())
+  id           String @default(cuid())
   title        String
   poster_path  String
   user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId       String
+
+  @@unique([userId, id])
 }

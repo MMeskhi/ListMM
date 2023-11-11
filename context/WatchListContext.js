@@ -68,10 +68,36 @@ export const WatchListProvider = ({ children }) => {
     }
   };
 
-  //   const removeMovieFromWatchList = async (movieId) => {};
+  const removeMovieFromWatchList = async (movieId) => {
+    try {
+      const response = await fetch("/watch/api/removeMovieFromList", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          movieId: movieId,
+          userId: session.user.id,
+        }),
+      });
+
+      if (response.ok) {
+        const updatedMovies = movies.filter((movie) => movie.id !== movieId);
+        setMovies(updatedMovies);
+        toast.success("Movie removed from WatchList");
+      } else {
+        toast.error("Failed to remove movie from WatchList");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred");
+    }
+  };
 
   return (
-    <WatchListContext.Provider value={{ movies, addMovieToWatchList }}>
+    <WatchListContext.Provider
+      value={{ movies, addMovieToWatchList, removeMovieFromWatchList }}
+    >
       {children}
     </WatchListContext.Provider>
   );

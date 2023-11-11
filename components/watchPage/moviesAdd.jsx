@@ -27,7 +27,7 @@ export default function MoviesAdd() {
       await addMovieToWatchList(movie);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to add movie to WatchList");
+      toast.error("Failed to add movie to WatchList 2");
     }
   };
 
