@@ -9,6 +9,7 @@ export const WatchListContext = createContext();
 export const WatchListProvider = ({ children }) => {
   const { data: session } = useSession();
   const [movies, setMovies] = useState([]);
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
 
   useEffect(() => {
     const fetchWatchList = async () => {
@@ -38,7 +39,7 @@ export const WatchListProvider = ({ children }) => {
     };
 
     fetchWatchList();
-  }, [session]);
+  }, [session, lastUpdate]);
 
   const addMovieToWatchList = async (movie) => {
     try {
@@ -66,6 +67,8 @@ export const WatchListProvider = ({ children }) => {
       console.error(error);
       toast.error("An error occurred");
     }
+
+    setLastUpdate(Date.now());
   };
 
   const removeMovieFromWatchList = async (movieId) => {
