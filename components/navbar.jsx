@@ -5,6 +5,7 @@ import { useUserSession, userSignIn, userSignOut } from "../lib/session";
 import Image from "next/image";
 import { AiOutlineLogout, AiOutlineGoogle } from "react-icons/ai";
 import { motion } from "framer-motion";
+import { links } from "@/lib/data";
 
 export default function Navbar() {
   const { status, session } = useUserSession();
@@ -16,23 +17,18 @@ export default function Navbar() {
             List
             <span className="font-extrabold italic">MM</span>
           </Link>
-          <nav className="">
+          <nav className="z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:rounded-sm max-sm:py-4">
             <ul className="flex justify-center items-center space-x-8">
-              <li>
-                <Link href="/watch" className="text-gray-300">
-                  Watch
-                </Link>
-              </li>
-              <li>
-                <Link href="/listen" className="text-gray-300">
-                  Listen
-                </Link>
-              </li>
-              <li>
-                <Link href="/play" className="text-gray-300">
-                  Play
-                </Link>
-              </li>
+              {links.map((link) => (
+                <li key={Link.hash}>
+                  <Link
+                    href={link.hash}
+                    className="text-gray-300 hover:text-opacity-95 active:text-opacity-90 duration-200"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </nav>
           <div className="flex gap-4">
