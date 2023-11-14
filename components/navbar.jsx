@@ -6,28 +6,57 @@ import Image from "next/image";
 import { AiOutlineLogout, AiOutlineGoogle } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { links } from "@/lib/data";
+import clsx from "clsx";
+import { useActivePageContext } from "@/context/activePageContext";
 
 export default function Navbar() {
   const { status, session } = useUserSession();
+
+  const { activePage, setActivePage, setTimeOfLastClick } =
+    useActivePageContext();
+
   return (
-    <header className="my-5 container mx-auto max-w-screen-2xl">
+    <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4">
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
-          <Link href="/" className="text-gray-300 text-3xl">
+          <Link href="" className="text-gray-300 text-3xl">
             List
             <span className="font-extrabold italic">MM</span>
           </Link>
           <nav className="z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:rounded-sm max-sm:py-4">
             <ul className="flex justify-center items-center space-x-8">
               {links.map((link) => (
-                <li key={Link.hash}>
+                <motion.li
+                  key={link.hash}
+                  initial={{ y: -70, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                >
                   <Link
                     href={link.hash}
-                    className="text-gray-300 hover:text-opacity-95 active:text-opacity-90 duration-200"
+                    className={clsx(
+                      "text-gray-300 hover:text-opacity-95 active:text-opacity-90 duration-200 px-3 py-1 relative z-50 max-md:text-lg",
+                      {
+                        "text-opacity-95": activePage === link.name,
+                      }
+                    )}
+                    onClick={() => {
+                      setActivePage(link.name);
+                      setTimeOfLastClick(Date.now());
+                    }}
                   >
                     {link.name}
+                    {link.name === activePage && (
+                      <motion.span
+                        className="bg-gray-700 bg-opacity-60 rounded-full border border-gray-700 absolute inset-0 -z-10"
+                        layoutId="activePage"
+                        transition={{
+                          stiffness: 400,
+                          damping: 40,
+                        }}
+                      ></motion.span>
+                    )}
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </nav>

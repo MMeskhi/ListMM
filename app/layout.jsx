@@ -5,6 +5,7 @@ import Navbar from "@/components/navbar";
 import constructMetadata from "@/lib/utils";
 import { getServerSession } from "next-auth";
 import { NextAuthProvider } from "../lib/providers";
+import { ActivePageContextProvider } from "@/context/activePageContext";
 
 export const geist = localFont({
   src: "../components/ui/fonts/GeistVariableVF.woff2",
@@ -29,11 +30,13 @@ export default async function RootLayout({ children }) {
         className={`${geist.variable} font-sans font-semibold flex min-h-screen flex-col justify-between bg-gray-900`}
       >
         <NextAuthProvider session={session}>
-          <Navbar />
-          <main className="container mx-auto max-w-screen-2xl flex-1 h-full">
-            {children}
-          </main>
-          <Footer />
+          <ActivePageContextProvider>
+            <Navbar />
+            <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-4">
+              {children}
+            </main>
+            <Footer />
+          </ActivePageContextProvider>
         </NextAuthProvider>
       </body>
     </html>
