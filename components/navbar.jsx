@@ -73,6 +73,7 @@ export default function Navbar() {
             <button
               onClick={() => userSignOut()}
               className="text-gray-300 text-2xl hover:opacity-80 duration-200"
+              aria-label="Sign Out"
             >
               <AiOutlineLogout />
             </button>
@@ -88,6 +89,7 @@ export default function Navbar() {
           <button
             onClick={() => userSignIn()}
             className="flex justify-center items-center gap-2 text-slate-800 border rounded-sm text-lg border-gray-950 px-9 py-3 bg-gray-300 hover:bg-opacity-0 hover:text-gray-300 hover:border-slate-300 duration-300"
+            aria-label="Sign In"
           >
             Sign In
             <AiOutlineGoogle className="text-xl" />

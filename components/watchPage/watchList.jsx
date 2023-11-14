@@ -8,11 +8,11 @@ export default function WatchList() {
   const { movies, removeMovieFromWatchList } = useContext(WatchListContext);
 
   return (
-    <div className="mt-5 h-full flex gap-4 flex-wrap">
+    <div className="mt-5 h-full grid grid-cols-12 gap-4 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10">
       {movies &&
         movies.map((movie) => (
-          <div key={movie.id} className="rounded-sm w-24 max-md:w-20">
-            <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none">
+          <div key={movie.id} className="rounded-sm w-auto">
+            <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-[140px]">
               <span
                 className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-lg bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
                 onClick={() => removeMovieFromWatchList(movie.id)}
@@ -24,7 +24,7 @@ export default function WatchList() {
                 alt={movie.title}
                 width={100}
                 height={100}
-                className="object-cover rounded-sm border border-gray-800 shadow-sm h-[143px] max-md:h-[120px]"
+                className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full"
               />
             </div>
             <h2 className="truncate text-gray-300 w-full text-sm">
