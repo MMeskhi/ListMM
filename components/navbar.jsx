@@ -23,14 +23,14 @@ export default function Navbar() {
             List
             <span className="font-extrabold italic">MM</span>
           </Link>
-          <nav className="z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:rounded-sm max-sm:py-4">
+          <motion.nav
+            className="z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:rounded-sm max-sm:py-4"
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+          >
             <ul className="flex justify-center items-center space-x-8">
               {links.map((link) => (
-                <motion.li
-                  key={link.hash}
-                  initial={{ y: -70, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                >
+                <motion.li key={link.hash}>
                   <Link
                     href={link.hash}
                     className={clsx(
@@ -48,6 +48,8 @@ export default function Navbar() {
                     {link.name === activePage && (
                       <motion.span
                         className="bg-gray-700 bg-opacity-60 rounded-full border border-gray-700 absolute inset-0 -z-10"
+                        initial={{ x: -20, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
                         layoutId="activePage"
                         transition={{
                           stiffness: 400,
@@ -59,7 +61,7 @@ export default function Navbar() {
                 </motion.li>
               ))}
             </ul>
-          </nav>
+          </motion.nav>
           <div className="flex gap-4">
             <Image
               src={session?.user?.image}

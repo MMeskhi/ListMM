@@ -10,7 +10,9 @@ function ActivePageContextProvider({ children }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (pathname === "/listen") {
+    if (pathname === "/") {
+      setActivePage(null);
+    } else if (pathname === "/listen") {
       setActivePage("Listen");
     } else if (pathname === "/play") {
       setActivePage("Play");

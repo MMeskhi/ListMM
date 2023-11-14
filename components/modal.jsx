@@ -19,7 +19,7 @@ export function Modal({ setSelectedMovies }) {
           Add
         </Button>
       </DialogTrigger>
-      <DialogContent className="overflow-y-auto max-h-[80vh] max-w-xl">
+      <DialogContent className="overflow-y-auto max-h-[60vh] max-w-xl bg-gray-200">
         <DialogHeader>
           <DialogTitle>Find The Movie</DialogTitle>
         </DialogHeader>
