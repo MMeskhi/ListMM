@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { WatchListContext } from "@/context/WatchListContext";
-import { BsFillCheckCircleFill } from "react-icons/bs";
+import { BsFillXCircleFill } from "react-icons/bs";
 
 export default function WatchList() {
   const { movies, removeMovieFromWatchList } = useContext(WatchListContext);
@@ -12,12 +12,12 @@ export default function WatchList() {
       {movies &&
         movies.map((movie) => (
           <div key={movie.id} className="rounded-sm w-auto">
-            <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-[140px]">
+            <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-[140px]">
               <span
-                className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-lg bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
+                className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-xl bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
                 onClick={() => removeMovieFromWatchList(movie.id)}
               >
-                <BsFillCheckCircleFill />
+                <BsFillXCircleFill />
               </span>
               <Image
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -32,7 +32,7 @@ export default function WatchList() {
                 href={`https://letterboxd.com/tmdb/${movie.id}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-fit"
+                className="w-fit hover:text-slate-200 duration-150"
               >
                 {movie.title}
               </Link>

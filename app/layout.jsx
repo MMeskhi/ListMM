@@ -32,7 +32,7 @@ export default async function RootLayout({ children }) {
         <NextAuthProvider session={session}>
           <ActivePageContextProvider>
             <Navbar />
-            <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-4">
+            <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-3">
               {children}
             </main>
             <Footer />

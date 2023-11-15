@@ -25,8 +25,8 @@ export default function Navbar() {
           </Link>
           <motion.nav
             className="z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:rounded-sm max-sm:py-4"
-            initial={{ y: -20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
+            initial={{ scale: 0.6, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
           >
             <ul className="flex justify-center items-center space-x-8">
               {links.map((link) => (
@@ -34,7 +34,7 @@ export default function Navbar() {
                   <Link
                     href={link.hash}
                     className={clsx(
-                      "text-gray-300 hover:text-opacity-95 active:text-opacity-90 duration-200 px-3 py-1 relative z-50 max-md:text-lg",
+                      "text-gray-300 hover:text-opacity-95 active:text-opacity-80 active:duration-75 duration-200 px-3 py-1 relative z-50 max-md:text-lg",
                       {
                         "text-opacity-95": activePage === link.name,
                       }
@@ -48,8 +48,8 @@ export default function Navbar() {
                     {link.name === activePage && (
                       <motion.span
                         className="bg-gray-700 bg-opacity-60 rounded-full border border-gray-700 absolute inset-0 -z-10"
-                        initial={{ x: -20, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
+                        initial={{ scale: 0.5, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
                         layoutId="activePage"
                         transition={{
                           stiffness: 400,
@@ -72,7 +72,7 @@ export default function Navbar() {
             />
             <button
               onClick={() => userSignOut()}
-              className="text-gray-300 text-2xl hover:opacity-80 duration-200"
+              className="text-gray-300 text-2xl hover:opacity-80 duration-200 active:scale-95 active:duration-75"
               aria-label="Sign Out"
             >
               <AiOutlineLogout />
@@ -88,7 +88,7 @@ export default function Navbar() {
         >
           <button
             onClick={() => userSignIn()}
-            className="flex justify-center items-center gap-2 text-slate-800 border rounded-sm text-lg border-gray-950 px-9 py-3 bg-gray-300 hover:bg-opacity-0 hover:text-gray-300 hover:border-slate-300 duration-300"
+            className="flex justify-center items-center gap-2 text-slate-800 border rounded-sm text-lg border-gray-950 px-9 py-3 bg-gray-300 hover:bg-opacity-0 hover:text-gray-300 hover:border-slate-300 duration-300 active:scale-95 active:duration-75"
             aria-label="Sign In"
           >
             Sign In
