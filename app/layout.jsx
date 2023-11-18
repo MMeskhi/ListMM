@@ -6,6 +6,7 @@ import constructMetadata from "@/lib/utils";
 import { getServerSession } from "next-auth";
 import { NextAuthProvider } from "../lib/providers";
 import { ActivePageContextProvider } from "@/context/activePageContext";
+import { Analytics } from "@vercel/analytics/react";
 
 export const geist = localFont({
   src: "../components/ui/fonts/GeistVariableVF.woff2",
@@ -34,6 +35,7 @@ export default async function RootLayout({ children }) {
             <Navbar />
             <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-3">
               {children}
+              <Analytics />
             </main>
             <Footer />
           </ActivePageContextProvider>
