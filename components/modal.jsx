@@ -11,7 +11,7 @@ import {
 
 import MoviesAdd from "./watchPage/moviesAdd";
 
-export function Modal({ setSelectedMovies }) {
+export function Modal() {
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -23,7 +23,7 @@ export function Modal({ setSelectedMovies }) {
         <DialogHeader>
           <DialogTitle>Find The Movie</DialogTitle>
         </DialogHeader>
-        <MoviesAdd setSelectedMovies={setSelectedMovies} />
+        <MoviesAdd />
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
             <Button type="button" variant="secondary" className="mt-4">
