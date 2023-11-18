@@ -9,7 +9,7 @@ export default function SearchResults({ results, onMovieClick }) {
         .filter((movie) => movie.poster_path)
         .map((movie) => (
           <div key={movie.id} className="rounded-sm">
-            <div className="relative  hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-[180px] max-sm:h-[160px]">
+            <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-[180px] max-sm:h-[160px]">
               <span
                 className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-xl bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
                 onClick={() => {
@@ -23,7 +23,7 @@ export default function SearchResults({ results, onMovieClick }) {
                 alt={movie.title}
                 width={200}
                 height={200}
-                className="object-cover rounded-sm w-full h-full"
+                className="object-cover rounded-sm w-full h-full shadow-sm"
               />
             </div>
             <h2 className="truncate w-full">

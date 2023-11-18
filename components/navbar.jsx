@@ -62,7 +62,7 @@ export default function Navbar() {
               ))}
             </ul>
           </motion.nav>
-          <div className="flex gap-4">
+          <div className="flex gap-2">
             <Image
               src={session?.user?.image}
               alt={session?.user?.name}

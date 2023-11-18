@@ -9,7 +9,7 @@ export default function WatchList() {
   const { movies, removeMovieFromWatchList } = useContext(WatchListContext);
 
   return (
-    <div className="mt-5 h-full grid grid-cols-12 gap-4 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10">
+    <div className="mt-4 h-full grid grid-cols-12 gap-4 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10">
       {movies &&
         movies.map((movie) => (
           <div key={movie.id} className="rounded-sm w-auto">
