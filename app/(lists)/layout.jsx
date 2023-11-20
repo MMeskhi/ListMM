@@ -14,6 +14,7 @@ export default function ListsLayout({ children }) {
           rtl={false}
           pauseOnFocusLoss
           theme="dark"
+          className="text-xs"
         />
         <ListBoard>{children}</ListBoard>
       </WatchListProvider>

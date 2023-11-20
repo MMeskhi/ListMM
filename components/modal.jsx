@@ -26,7 +26,7 @@ export function Modal() {
         <MoviesAdd />
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="button" variant="secondary" className="mt-4">
+            <Button type="button" variant="secondary">
               Close
             </Button>
           </DialogClose>

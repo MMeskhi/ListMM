@@ -1,5 +1,10 @@
 import React from "react";
 
+export const metadata = {
+  title: "Play",
+  description: "Play list for games",
+};
+
 export default function Play() {
   return (
     <div>

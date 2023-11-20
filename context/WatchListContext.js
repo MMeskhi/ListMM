@@ -10,6 +10,7 @@ export const WatchListProvider = ({ children }) => {
   const { data: session } = useSession();
   const [movies, setMovies] = useState([]);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
+  const [removingMovies, setRemovingMovies] = useState([]);
 
   useEffect(() => {
     const fetchWatchList = async () => {
@@ -72,6 +73,7 @@ export const WatchListProvider = ({ children }) => {
   };
 
   const removeMovieFromWatchList = async (movieId) => {
+    setRemovingMovies((prevRemovingMovies) => [...prevRemovingMovies, movieId]);
     try {
       const response = await fetch("/watch/api/removeMovieFromList", {
         method: "POST",
@@ -95,11 +97,21 @@ export const WatchListProvider = ({ children }) => {
       console.error(error);
       toast.error("An error occurred");
     }
+
+    setLastUpdate(Date.now());
+    setRemovingMovies((prevRemovingMovies) =>
+      prevRemovingMovies.filter((id) => id !== movieId)
+    );
   };
 
   return (
     <WatchListContext.Provider
-      value={{ movies, addMovieToWatchList, removeMovieFromWatchList }}
+      value={{
+        movies,
+        addMovieToWatchList,
+        removeMovieFromWatchList,
+        removingMovies,
+      }}
     >
       {children}
     </WatchListContext.Provider>

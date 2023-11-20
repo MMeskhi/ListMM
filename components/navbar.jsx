@@ -16,7 +16,7 @@ export default function Navbar() {
     useActivePageContext();
 
   return (
-    <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4">
+    <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 relative">
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
           <Link href="" className="text-gray-300 text-3xl">
@@ -24,7 +24,7 @@ export default function Navbar() {
             <span className="font-extrabold italic">MM</span>
           </Link>
           <motion.nav
-            className="z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:rounded-sm max-sm:py-4"
+            className="absolute m-auto left-0 right-0 w-fit z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:rounded-sm max-sm:py-4 max-sm:rounded-t-xl"
             initial={{ scale: 0.6, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
           >
@@ -34,7 +34,7 @@ export default function Navbar() {
                   <Link
                     href={link.hash}
                     className={clsx(
-                      "text-gray-300 hover:text-opacity-95 active:text-opacity-80 active:duration-75 duration-200 px-3 py-1 relative z-50 max-md:text-lg",
+                      "text-gray-300 hover:text-opacity-95 active:text-opacity-80 active:duration-75 duration-200 px-3 py-1 relative z-50 max-sm:text-lg",
                       {
                         "text-opacity-95": activePage === link.name,
                       }
@@ -68,7 +68,7 @@ export default function Navbar() {
               alt={session?.user?.name}
               width={50}
               height={50}
-              className="rounded-full object-cover"
+              className="rounded-full object-cover select-none"
             />
             <button
               onClick={() => userSignOut()}
