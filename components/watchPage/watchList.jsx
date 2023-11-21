@@ -11,45 +11,46 @@ export default function WatchList() {
     useContext(WatchListContext);
 
   return (
-    <div className="mt-4 h-full grid grid-cols-12 gap-4 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10">
+    <ul className="mt-4 h-full grid grid-cols-12 gap-3 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10">
       {movies &&
         movies.map((movie) => (
-          <div key={movie.id}>
-            <div key={movie.id} className="rounded-sm w-auto">
-              <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-[140px]">
-                {removingMovies.includes(movie.id) ? (
-                  <div className="absolute right-1.5 top-1.5">
-                    <TinySpinner />
-                  </div>
-                ) : (
-                  <span
-                    className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-xl bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
-                    onClick={() => removeMovieFromWatchList(movie.id)}
-                  >
-                    <BsFillXCircleFill />
-                  </span>
-                )}
-                <Image
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  width={100}
-                  height={100}
-                  className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full"
-                />
-              </div>
-              <h2 className="truncate text-gray-300 w-full text-sm">
-                <Link
-                  href={`https://letterboxd.com/tmdb/${movie.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-fit hover:text-slate-200 duration-150"
+          <li
+            key={movie.id}
+            className="rounded-sm w-auto flex flex-col justify-between"
+          >
+            <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 [&>span]:hover:visible select-none h-full">
+              {removingMovies.includes(movie.id) ? (
+                <div className="absolute right-1.5 top-1.5">
+                  <TinySpinner />
+                </div>
+              ) : (
+                <span
+                  className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-xl bg-slate-800 p-px rounded-full shadow-sm cursor-pointer invisible hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
+                  onClick={() => removeMovieFromWatchList(movie.id)}
                 >
-                  {movie.title}
-                </Link>
-              </h2>
+                  <BsFillXCircleFill />
+                </span>
+              )}
+              <Image
+                src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
+                alt={movie.title}
+                width={100}
+                height={100}
+                className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full"
+              />
             </div>
-          </div>
+            <h2 className="truncate text-gray-300 w-full text-sm">
+              <Link
+                href={`https://letterboxd.com/tmdb/${movie.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-fit hover:text-slate-200 duration-150"
+              >
+                {movie.title}
+              </Link>
+            </h2>
+          </li>
         ))}
-    </div>
+    </ul>
   );
 }

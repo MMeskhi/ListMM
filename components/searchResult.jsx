@@ -21,8 +21,11 @@ export default function SearchResults({
         results
           .filter((movie) => movie.poster_path)
           .map((movie) => (
-            <div key={movie.id} className="rounded-sm">
-              <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-[180px] max-sm:h-[160px]">
+            <div
+              key={movie.id}
+              className="rounded-sm flex flex-col justify-between"
+            >
+              <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-full">
                 {addingMovies.includes(movie.id) ? (
                   <div className="absolute right-1.5 top-1.5">
                     <TinySpinner />
@@ -38,7 +41,7 @@ export default function SearchResults({
                   </span>
                 )}
                 <Image
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
                   alt={movie.title}
                   width={200}
                   height={200}

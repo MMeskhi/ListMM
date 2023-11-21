@@ -58,8 +58,7 @@ export const WatchListProvider = ({ children }) => {
       });
 
       if (response.ok) {
-        const updatedMovies = [...movies, movie];
-        setMovies(updatedMovies);
+        setLastUpdate(Date.now());
         toast.success("Movie added to WatchList");
       } else {
         toast.error("Failed to add movie to WatchList");
@@ -68,8 +67,6 @@ export const WatchListProvider = ({ children }) => {
       console.error(error);
       toast.error("An error occurred");
     }
-
-    setLastUpdate(Date.now());
   };
 
   const removeMovieFromWatchList = async (movieId) => {
@@ -87,8 +84,7 @@ export const WatchListProvider = ({ children }) => {
       });
 
       if (response.ok) {
-        const updatedMovies = movies.filter((movie) => movie.id !== movieId);
-        setMovies(updatedMovies);
+        setLastUpdate(Date.now());
         toast.success("Movie removed from WatchList");
       } else {
         toast.error("Failed to remove movie from WatchList");
@@ -98,7 +94,6 @@ export const WatchListProvider = ({ children }) => {
       toast.error("An error occurred");
     }
 
-    setLastUpdate(Date.now());
     setRemovingMovies((prevRemovingMovies) =>
       prevRemovingMovies.filter((id) => id !== movieId)
     );

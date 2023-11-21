@@ -19,7 +19,7 @@ export default function Navbar() {
     <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 relative">
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
-          <Link href="" className="text-gray-300 text-3xl">
+          <Link href="/" className="text-gray-300 text-3xl">
             List
             <span className="font-extrabold italic">MM</span>
           </Link>

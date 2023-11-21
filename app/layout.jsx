@@ -28,12 +28,12 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geist.variable} font-sans font-semibold flex min-h-screen flex-col justify-between bg-gray-900`}
+        className={`${geist.variable} font-sans font-semibold flex min-h-screen flex-col justify-between bg-gray-900 overflow-x-hidden`}
       >
         <NextAuthProvider session={session}>
           <ActivePageContextProvider>
             <Navbar />
-            <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-3">
+            <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2">
               {children}
               <Analytics />
             </main>
