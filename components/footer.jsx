@@ -1,8 +1,11 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function Footer() {
+  const pathname = usePathname();
+
   const madeByBox = {
     default: { y: -20, opacity: 0 },
     hover: { y: 0, opacity: 1 },
