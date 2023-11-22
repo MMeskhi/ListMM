@@ -8,21 +8,18 @@ export default function Intro() {
       <motion.span
         initial={{ y: 24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.1 }}
       >
         Watch
       </motion.span>
       <motion.span
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.4 }}
       >
         Listen
       </motion.span>
       <motion.span
         initial={{ y: 24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.7 }}
       >
         Play
       </motion.span>
