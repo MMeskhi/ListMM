@@ -5,13 +5,18 @@ import Link from "next/link";
 import { WatchListContext } from "@/context/WatchListContext";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { TinySpinner } from "../loaders";
+import { motion } from "framer-motion";
 
 export default function WatchList() {
   const { movies, removeMovieFromWatchList, removingMovies } =
     useContext(WatchListContext);
 
   return (
-    <ul className="mt-4 h-full grid grid-cols-12 gap-3 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10">
+    <motion.ul
+      className="mt-4 h-full grid grid-cols-12 gap-3 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10"
+      initial={{ y: 24, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+    >
       {movies &&
         movies.map((movie) => (
           <li
@@ -51,6 +56,6 @@ export default function WatchList() {
             </h2>
           </li>
         ))}
-    </ul>
+    </motion.ul>
   );
 }

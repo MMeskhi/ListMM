@@ -43,8 +43,8 @@ export default function SearchResults({
                 <Image
                   src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
                   alt={movie.title}
-                  width={200}
-                  height={200}
+                  width={100}
+                  height={100}
                   className="object-cover rounded-sm w-full h-full shadow-sm"
                 />
               </div>

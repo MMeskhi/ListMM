@@ -6,6 +6,7 @@ import constructMetadata from "@/lib/utils";
 import { getServerSession } from "next-auth";
 import { NextAuthProvider } from "../lib/providers";
 import { ActivePageContextProvider } from "@/context/activePageContext";
+import { WatchListProvider } from "@/context/WatchListContext";
 import { Analytics } from "@vercel/analytics/react";
 
 export const geist = localFont({
@@ -31,14 +32,16 @@ export default async function RootLayout({ children }) {
         className={`${geist.variable} font-sans font-semibold flex min-h-screen flex-col justify-between bg-gray-900 overflow-x-hidden`}
       >
         <NextAuthProvider session={session}>
-          <ActivePageContextProvider>
-            <Navbar />
-            <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2">
-              {children}
-              <Analytics />
-            </main>
-            <Footer />
-          </ActivePageContextProvider>
+          <WatchListProvider>
+            <ActivePageContextProvider>
+              <Navbar />
+              <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2">
+                {children}
+                <Analytics />
+              </main>
+              <Footer />
+            </ActivePageContextProvider>
+          </WatchListProvider>
         </NextAuthProvider>
       </body>
     </html>

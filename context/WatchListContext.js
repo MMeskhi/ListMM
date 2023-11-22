@@ -16,7 +16,7 @@ export const WatchListProvider = ({ children }) => {
     const fetchWatchList = async () => {
       if (session) {
         try {
-          const response = await fetch("/watch/api/getWatchList", {
+          const response = await fetch("/api/getWatchList", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -44,7 +44,7 @@ export const WatchListProvider = ({ children }) => {
 
   const addMovieToWatchList = async (movie) => {
     try {
-      const response = await fetch("/watch/api/addMoviesToList", {
+      const response = await fetch("/api/addMoviesToList", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,7 +72,7 @@ export const WatchListProvider = ({ children }) => {
   const removeMovieFromWatchList = async (movieId) => {
     setRemovingMovies((prevRemovingMovies) => [...prevRemovingMovies, movieId]);
     try {
-      const response = await fetch("/watch/api/removeMovieFromList", {
+      const response = await fetch("/api/removeMovieFromList", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

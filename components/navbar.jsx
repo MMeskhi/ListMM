@@ -81,8 +81,8 @@ export default function Navbar() {
         </div>
       ) : (
         <motion.div
-          className="flex justify-center items-center mt-20"
-          initial={{ y: -40, opacity: 0 }}
+          className="flex justify-center items-center"
+          initial={{ y: -24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ delay: 1 }}
         >
