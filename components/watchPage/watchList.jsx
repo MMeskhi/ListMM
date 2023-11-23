@@ -5,23 +5,18 @@ import Link from "next/link";
 import { WatchListContext } from "@/context/WatchListContext";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { TinySpinner } from "../loaders";
-import { motion } from "framer-motion";
 
 export default function WatchList() {
   const { movies, removeMovieFromWatchList, removingMovies } =
     useContext(WatchListContext);
 
   return (
-    <motion.ul
-      className="mt-4 h-full grid grid-cols-12 gap-3 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10"
-      initial={{ y: 24, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-    >
+    <ul className="mt-4 h-full grid grid-cols-12 gap-3 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10">
       {movies &&
         movies.map((movie) => (
           <li
             key={movie.id}
-            className="rounded-sm w-auto flex flex-col justify-between"
+            className="rounded-sm w-auto flex flex-col justify-between animate-slide-top"
           >
             <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 [&>span]:hover:visible select-none h-full">
               {removingMovies.includes(movie.id) ? (
@@ -56,6 +51,6 @@ export default function WatchList() {
             </h2>
           </li>
         ))}
-    </motion.ul>
+    </ul>
   );
 }
