@@ -1,9 +1,7 @@
 import "./globals.css";
-import localFont from "next/font/local";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import constructMetadata from "@/lib/utils";
-import { getServerSession } from "next-auth";
 import { NextAuthProvider } from "../lib/providers";
 import { ActivePageContextProvider } from "@/context/activePageContext";
 import { WatchListProvider } from "@/context/WatchListContext";
@@ -12,14 +10,6 @@ import { Inter } from "@next/font/google";
 
 const inter = Inter({ weight: "700", subsets: ["latin"] });
 
-// export const geist = localFont({
-//   src: "../components/ui/fonts/GeistVariableVF.woff2",
-//   variable: "--font-geist",
-//   weight: "600 800",
-//   display: "swap",
-//   style: "normal",
-// });
-
 export const metadata = constructMetadata();
 
 export const viewport = {
@@ -27,18 +17,16 @@ export const viewport = {
 };
 
 export default async function RootLayout({ children }) {
-  const session = await getServerSession();
-
   return (
     <html lang="en">
       <body
         className={`${inter.className} flex min-h-screen flex-col justify-between bg-gray-900 overflow-x-hidden`}
       >
-        <NextAuthProvider session={session}>
+        <NextAuthProvider>
           <WatchListProvider>
             <ActivePageContextProvider>
               <Navbar />
-              <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2">
+              <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-24">
                 {children}
                 <Analytics />
               </main>

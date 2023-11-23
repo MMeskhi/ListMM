@@ -16,9 +16,6 @@ module.exports = {
       },
     },
     extend: {
-      fontFamily: {
-        sans: ["var(--font-geist)"],
-      },
       gridTemplateColumns: {
         fluid: "repeat(auto-fit, minmax(8rem, 1fr))",
       },

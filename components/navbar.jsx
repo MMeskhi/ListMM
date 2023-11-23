@@ -16,7 +16,7 @@ export default function Navbar() {
     useActivePageContext();
 
   return (
-    <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 relative">
+    <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]">
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
           <motion.div
@@ -93,11 +93,11 @@ export default function Navbar() {
           className="flex justify-center items-center"
           initial={{ y: -24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 1 }}
+          transition={{ delay: 0.6 }}
         >
           <button
             onClick={() => userSignIn()}
-            className="flex justify-center items-center gap-2 text-slate-800 border rounded-sm text-lg border-gray-950 px-9 py-3 bg-gray-300 hover:bg-opacity-0 hover:text-gray-300 hover:border-slate-300 duration-300 active:scale-95 active:duration-75"
+            className="flex justify-center items-center gap-2 text-slate-800 border rounded-sm text-lg border-gray-950 px-8 py-2 bg-gray-300 hover:bg-opacity-0 hover:text-gray-300 hover:border-slate-300 duration-300 active:scale-95 active:duration-75"
             aria-label="Sign In"
           >
             Sign In
