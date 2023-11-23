@@ -8,6 +8,9 @@ import { NextAuthProvider } from "../lib/providers";
 import { ActivePageContextProvider } from "@/context/activePageContext";
 import { WatchListProvider } from "@/context/WatchListContext";
 import { Analytics } from "@vercel/analytics/react";
+import { Inter } from "@next/font/google";
+
+const inter = Inter({ weight: "700", subsets: ["latin"] });
 
 export const geist = localFont({
   src: "../components/ui/fonts/GeistVariableVF.woff2",
@@ -29,7 +32,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geist.variable} font-sans font-semibold flex min-h-screen flex-col justify-between bg-gray-900 overflow-x-hidden`}
+        className={`${inter.className} flex min-h-screen flex-col justify-between bg-gray-900 overflow-x-hidden`}
       >
         <NextAuthProvider session={session}>
           <WatchListProvider>
