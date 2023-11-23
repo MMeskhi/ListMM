@@ -6,6 +6,10 @@ import { usePathname } from "next/navigation";
 export default function Footer() {
   const pathname = usePathname();
 
+  const noFooterPages = ["/watch", "/listen", "/play"];
+
+  if (noFooterPages.includes(pathname)) return null;
+
   const madeByBox = {
     default: { y: -20, opacity: 0 },
     hover: { y: 0, opacity: 1 },
