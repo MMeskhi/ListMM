@@ -12,13 +12,13 @@ import { Inter } from "@next/font/google";
 
 const inter = Inter({ weight: "700", subsets: ["latin"] });
 
-export const geist = localFont({
-  src: "../components/ui/fonts/GeistVariableVF.woff2",
-  variable: "--font-geist",
-  weight: "600 800",
-  display: "swap",
-  style: "normal",
-});
+// export const geist = localFont({
+//   src: "../components/ui/fonts/GeistVariableVF.woff2",
+//   variable: "--font-geist",
+//   weight: "600 800",
+//   display: "swap",
+//   style: "normal",
+// });
 
 export const metadata = constructMetadata();
 

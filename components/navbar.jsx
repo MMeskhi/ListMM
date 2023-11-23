@@ -19,10 +19,15 @@ export default function Navbar() {
     <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 relative">
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
-          <Link href="/" className="text-gray-300 text-3xl">
-            List
-            <span className="font-extrabold italic">MM</span>
-          </Link>
+          <motion.div
+            initial={{ x: -24, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+          >
+            <Link href="/" className="text-gray-300 text-3xl">
+              List
+              <span className="font-extrabold italic">MM</span>
+            </Link>
+          </motion.div>
           <motion.nav
             className="absolute m-auto left-0 right-0 w-fit z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:rounded-sm max-sm:py-4 max-sm:rounded-t-xl"
             initial={{ y: -24, opacity: 0 }}
@@ -62,7 +67,11 @@ export default function Navbar() {
               ))}
             </ul>
           </motion.nav>
-          <div className="flex gap-2">
+          <motion.div
+            className="flex gap-2"
+            initial={{ x: 24, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+          >
             <Image
               src={session?.user?.image}
               alt={session?.user?.name}
@@ -77,7 +86,7 @@ export default function Navbar() {
             >
               <AiOutlineLogout />
             </button>
-          </div>
+          </motion.div>
         </div>
       ) : (
         <motion.div
