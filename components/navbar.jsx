@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { links } from "@/lib/data";
 import clsx from "clsx";
 import { useActivePageContext } from "@/context/activePageContext";
+import { Spinner } from "./loaders";
 
 export default function Navbar() {
   const { status, session } = useUserSession();
@@ -15,8 +16,16 @@ export default function Navbar() {
   const { activePage, setActivePage, setTimeOfLastClick } =
     useActivePageContext();
 
+  if (status === "loading") {
+    return (
+      <header className="my-5 pb-20 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]">
+        <Spinner />
+      </header>
+    );
+  }
+
   return (
-    <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]">
+    <header className="my-5 pb-20 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]">
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
           <motion.div
@@ -33,7 +42,7 @@ export default function Navbar() {
             initial={{ y: -24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
-            <ul className="flex justify-center items-center space-x-8">
+            <ul className="flex justify-center items-center space-x-8 max-xs:space-x-4">
               {links.map((link) => (
                 <motion.li key={link.hash}>
                   <Link
