@@ -80,8 +80,8 @@ module.exports = {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "slide-top": "slide-top 0.2s both",
-        "scale-out": "scale-out 0.3s both",
+        "slide-top": "slide-top 0.2s both ease",
+        "scale-out": "scale-out 0.3s both ease",
       },
       keyframes: {
         "slide-top": {

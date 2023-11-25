@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import Link from "next/link";
 import { useUserSession, userSignIn, userSignOut } from "../lib/session";
 import Image from "next/image";
@@ -8,24 +8,21 @@ import { motion } from "framer-motion";
 import { links } from "@/lib/data";
 import clsx from "clsx";
 import { useActivePageContext } from "@/context/activePageContext";
-import { Spinner } from "./loaders";
+import { NavSkeleton, TinySpinner } from "./loaders";
 
 export default function Navbar() {
   const { status, session } = useUserSession();
+  const [loading, setLoading] = useState(false);
 
   const { activePage, setActivePage, setTimeOfLastClick } =
     useActivePageContext();
 
   if (status === "loading") {
-    return (
-      <header className="my-5 pb-20 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]">
-        <Spinner />
-      </header>
-    );
+    return <NavSkeleton />;
   }
 
   return (
-    <header className="my-5 pb-20 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]">
+    <header className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]">
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
           <motion.div
@@ -84,35 +81,55 @@ export default function Navbar() {
             <Image
               src={session?.user?.image}
               alt={session?.user?.name}
-              width={50}
-              height={50}
+              width={48}
+              height={48}
               className="rounded-full object-cover select-none"
             />
             <button
-              onClick={() => userSignOut()}
+              onClick={() => {
+                setLoading(true);
+                userSignOut();
+              }}
               className="text-gray-300 text-2xl hover:opacity-80 duration-200 active:scale-95 active:duration-75"
               aria-label="Sign Out"
             >
-              <AiOutlineLogout />
+              {loading ? <TinySpinner /> : <AiOutlineLogout />}
             </button>
           </motion.div>
         </div>
       ) : (
-        <motion.div
-          className="flex justify-center items-center"
-          initial={{ y: -24, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6 }}
-        >
-          <button
-            onClick={() => userSignIn()}
-            className="flex justify-center items-center gap-2 text-slate-800 border rounded-sm text-lg border-gray-950 px-8 py-2 bg-gray-300 hover:bg-opacity-0 hover:text-gray-300 hover:border-slate-300 duration-300 active:scale-95 active:duration-75"
-            aria-label="Sign In"
+        <div className="flex justify-between items-center">
+          <motion.div
+            initial={{ x: -24, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
           >
-            Sign In
-            <AiOutlineGoogle className="text-xl" />
-          </button>
-        </motion.div>
+            <Link href="/" className="text-gray-300 text-3xl">
+              List
+              <span className="font-extrabold italic">MM</span>
+            </Link>
+          </motion.div>
+          <motion.div
+            className="flex justify-center items-center py-px"
+            initial={{ x: 24, opacity: 0 }}
+            animate={{ x: 0, opacity: 1 }}
+          >
+            <button
+              onClick={() => {
+                setLoading(true);
+                userSignIn();
+              }}
+              className="flex justify-center items-center gap-2 text-slate-800 border rounded-sm text-lg border-gray-950 px-6 py-2 bg-gray-300 hover:bg-opacity-0 hover:text-gray-300 hover:border-slate-300 duration-300 active:scale-95 active:duration-75"
+              aria-label="Sign In"
+            >
+              Sign In
+              {loading ? (
+                <TinySpinner />
+              ) : (
+                <AiOutlineGoogle className="text-xl" />
+              )}
+            </button>
+          </motion.div>
+        </div>
       )}
     </header>
   );

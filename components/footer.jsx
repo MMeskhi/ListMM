@@ -16,7 +16,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="container mx-auto px-28 xl:px-20 max-w-6xl mt-8 mb-4 max-sm:hidden flex justify-center items-center relative z-[88]">
+    <footer className="container mx-auto px-28 xl:px-20 max-w-6xl mt-8 mb-4 flex justify-center items-center relative z-[88]">
       <motion.div
         className="flex flex-col justify-center items-center w-fit relative"
         initial="default"
@@ -35,7 +35,7 @@ export default function Footer() {
           className="text-gray-300 text-opacity-95 text-center cursor-default whitespace-nowrap select-none"
           initial={{ y: 16, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6 }}
+          transition={{ delay: 0.2 }}
         >
           &copy; 2023 Mikheil Meskhi
         </motion.div>

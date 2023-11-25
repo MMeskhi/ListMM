@@ -1,8 +1,19 @@
-export function ItemPulse() {
+import Link from "next/link";
+
+export function FullSpinner() {
   return (
-    <div className="rounded-sm h-full gap-1 flex flex-col">
-      <div className="h-full w-full bg-gray-800 rounded-sm animate-pulse"></div>
-      <div className="h-4 w-3/4 bg-gray-800 rounded-sm animate-pulse"></div>
+    <div
+      role="status"
+      className="flex justify-center items-center w-full h-screen fixed"
+    >
+      <h1
+        href="/"
+        className="text-gray-300 text-4xl select-none pb-80 animate-pulse "
+      >
+        List
+        <span className="font-extrabold italic">MM</span>
+      </h1>
+      <span className="sr-only">Loading...</span>
     </div>
   );
 }
@@ -49,6 +60,39 @@ export function TinySpinner() {
         />
       </svg>
       <span className="sr-only">Loading...</span>
+    </div>
+  );
+}
+
+export function NavSkeleton() {
+  return (
+    <header
+      role="status"
+      className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]"
+    >
+      <div className="flex justify-between items-center gap-8">
+        <Link
+          href="/"
+          className="text-3xl bg-gray-900 text-gray-300 animate-pulse"
+        >
+          List
+          <span className="font-extrabold italic">MM</span>
+        </Link>
+        <div className="bg-gray-900 text-gray-900 opacity-0">Loading</div>
+        <div className="bg-gray-900 text-gray-900 opacity-0 h-12">
+          Sign In / Sign Out
+        </div>
+        <span className="sr-only">Loading...</span>
+      </div>
+    </header>
+  );
+}
+
+export function ItemPulse() {
+  return (
+    <div className="rounded-sm h-full gap-1 flex flex-col">
+      <div className="h-full w-full bg-gray-800 rounded-sm animate-pulse"></div>
+      <div className="h-4 w-3/4 bg-gray-800 rounded-sm animate-pulse"></div>
     </div>
   );
 }

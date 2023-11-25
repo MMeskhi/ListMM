@@ -1,4 +1,5 @@
 import "./globals.css";
+import { Inter } from "@next/font/google";
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import constructMetadata from "@/lib/utils";
@@ -6,7 +7,6 @@ import { NextAuthProvider } from "../lib/providers";
 import { ActivePageContextProvider } from "@/context/activePageContext";
 import { WatchListProvider } from "@/context/WatchListContext";
 import { Analytics } from "@vercel/analytics/react";
-import { Inter } from "@next/font/google";
 
 const inter = Inter({ weight: "700", subsets: ["latin"] });
 

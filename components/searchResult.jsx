@@ -45,7 +45,7 @@ export default function SearchResults({
                   alt={movie.title}
                   width={100}
                   height={100}
-                  className="object-cover rounded-sm w-full h-full shadow-sm"
+                  className="object-cover rounded-sm w-full h-full min-h-[140px] shadow-sm"
                 />
               </div>
               <h2 className="truncate w-full">
