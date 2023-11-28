@@ -99,13 +99,29 @@ export const WatchListProvider = ({ children }) => {
     );
   };
 
+  const updateMovieOrder = async (newMovies) => {
+    const response = await fetch("/api/updateMovieOrder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ movies: newMovies }),
+    });
+
+    if (response.ok) {
+      setMovies(newMovies);
+    }
+  };
+
   return (
     <WatchListContext.Provider
       value={{
         movies,
+        setMovies,
         addMovieToWatchList,
         removeMovieFromWatchList,
         removingMovies,
+        updateMovieOrder,
       }}
     >
       {children}

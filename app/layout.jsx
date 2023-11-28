@@ -6,7 +6,6 @@ import constructMetadata from "@/lib/utils";
 import { NextAuthProvider } from "../lib/providers";
 import { ActivePageContextProvider } from "@/context/activePageContext";
 import { WatchListProvider } from "@/context/WatchListContext";
-import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ weight: "700", subsets: ["latin"] });
 
@@ -26,9 +25,8 @@ export default async function RootLayout({ children }) {
           <WatchListProvider>
             <ActivePageContextProvider>
               <Navbar />
-              <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-24">
+              <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-4">
                 {children}
-                <Analytics />
               </main>
               <Footer />
             </ActivePageContextProvider>

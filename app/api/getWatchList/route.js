@@ -6,11 +6,11 @@ export async function POST(req) {
   const body = await req.json();
 
   const { userId } = await body;
+
   try {
     const movies = await prisma.movie.findMany({
-      where: {
-        userId,
-      },
+      where: { userId },
+      orderBy: { order: "asc" },
     });
     return new Response(JSON.stringify({ movies }), { status: 200 });
   } catch (error) {

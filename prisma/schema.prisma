@@ -59,6 +59,7 @@ model Movie {
   poster_path  String
   user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId       String
+  order        Int
 
   @@unique([userId, id])
 }

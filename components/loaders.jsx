@@ -68,7 +68,7 @@ export function NavSkeleton() {
   return (
     <header
       role="status"
-      className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 fixed left-0 right-0 z-[999]"
+      className="my-5 container mx-auto max-w-screen-2xl max-md:px-4 z-[999]"
     >
       <div className="flex justify-between items-center gap-8">
         <Link

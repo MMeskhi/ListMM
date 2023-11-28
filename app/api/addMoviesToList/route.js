@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+
 const prisma = new PrismaClient();
 
 export async function POST(req) {
@@ -7,14 +8,18 @@ export async function POST(req) {
   const { movieId, title, poster_path, userId } = body;
 
   try {
+    const moviesCount = await prisma.movie.count({ where: { userId } });
+
     const movie = await prisma.movie.create({
       data: {
         id: String(movieId),
         title,
         poster_path,
         userId,
+        order: moviesCount + 1,
       },
     });
+
     return new Response(
       JSON.stringify({ message: "Movie added to WatchList", movie }),
       { status: 200 }
