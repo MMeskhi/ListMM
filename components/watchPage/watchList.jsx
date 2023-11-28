@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { WatchListContext } from "@/context/WatchListContext";
-import { BsFillXCircleFill, BsCircleFill } from "react-icons/bs";
+import { BsFillXCircleFill } from "react-icons/bs";
 import { RiDragMove2Fill } from "react-icons/ri";
 import { TinySpinner } from "../loaders";
 import { motion } from "framer-motion";
@@ -17,8 +17,13 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 
 export default function WatchList() {
-  const { movies, removeMovieFromWatchList, removingMovies, updateMovieOrder } =
-    useContext(WatchListContext);
+  const {
+    movies,
+    removeMovieFromWatchList,
+    removingMovies,
+    updateMovieOrder,
+    reorderingMovies,
+  } = useContext(WatchListContext);
 
   const SortableMovies = ({ movie }) => {
     const { attributes, listeners, setNodeRef, transform, transition } =
@@ -37,24 +42,31 @@ export default function WatchList() {
       >
         <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>button]:hover:opacity-100 [&>button]:hover:visible select-none h-full">
           {removingMovies.includes(movie.id) ? (
-            <div className="absolute right-1.5 top-1.5">
+            <div className="absolute right-1 top-[4px]">
               <TinySpinner />
             </div>
           ) : (
             <button
-              className="opacity-0 absolute right-1 top-[4px] text-gray-200 text-xl bg-gray-800 p-px rounded-full shadow-sm cursor-pointer invisible hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
+              className="opacity-0 absolute right-1 top-[4px] text-gray-200 text-xl bg-gray-800 p-px rounded-full shadow-sm cursor-pointer invisible hover:text-red-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
               onClick={() => removeMovieFromWatchList(movie.id)}
             >
               <BsFillXCircleFill />
             </button>
           )}
-          <button
-            {...attributes}
-            {...listeners}
-            className="opacity-0 absolute right-1 top-[30px] text-gray-200 text-lg bg-gray-800 p-px rounded-full shadow-sm invisible hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75 cursor-move border border-gray-200 hover:border-gray-800"
-          >
-            <RiDragMove2Fill />
-          </button>
+          {reorderingMovies.includes(movie.id) ? (
+            <div className="absolute right-1 top-[4px]">
+              <TinySpinner />
+            </div>
+          ) : (
+            <button
+              {...attributes}
+              {...listeners}
+              className="opacity-0 absolute right-1 top-[30px] text-gray-200 text-sm bg-gray-800 p-[3px] rounded-full shadow-sm invisible duration-200 cursor-move border border-gray-600 lg:hover:border-gray-400 touch-none"
+            >
+              <RiDragMove2Fill />
+            </button>
+          )}
+
           <Image
             src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
             alt={movie.title}
@@ -83,7 +95,7 @@ export default function WatchList() {
       const oldIndex = movies.findIndex((movie) => movie.id === active.id);
       const newIndex = movies.findIndex((movie) => movie.id === over.id);
       const newMovies = arrayMove(movies, oldIndex, newIndex);
-      await updateMovieOrder(newMovies); // Use the new function
+      await updateMovieOrder(newMovies, active.id);
     }
   };
 

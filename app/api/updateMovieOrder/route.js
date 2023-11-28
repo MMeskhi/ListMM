@@ -5,20 +5,19 @@ const prisma = new PrismaClient();
 export async function POST(req) {
   const body = await req.json();
 
-  const { movies } = body;
+  const { movies, userId } = body;
 
   try {
     for (let i = 0; i < movies.length; i++) {
-      try {
-        await prisma.movie.update({
-          where: { id: String(movies[i].id), userId: movies[i].userId },
-          data: { order: i },
-        });
-      } catch (error) {
-        console.error(
-          `Failed to update order of movie with id ${movies[i].id}: ${error}`
-        );
-      }
+      await prisma.movie.update({
+        where: {
+          userId_id: {
+            userId: userId,
+            id: movies[i].id,
+          },
+        },
+        data: { order: i + 1 },
+      });
     }
 
     return new Response(

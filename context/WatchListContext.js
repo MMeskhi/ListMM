@@ -11,6 +11,7 @@ export const WatchListProvider = ({ children }) => {
   const [movies, setMovies] = useState([]);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [removingMovies, setRemovingMovies] = useState([]);
+  const [reorderingMovies, setReorderingMovies] = useState([]);
 
   useEffect(() => {
     const fetchWatchList = async () => {
@@ -99,18 +100,27 @@ export const WatchListProvider = ({ children }) => {
     );
   };
 
-  const updateMovieOrder = async (newMovies) => {
+  const updateMovieOrder = async (newMovies, activeMovieId) => {
+    setReorderingMovies((prevReorderingMovies) => [
+      ...prevReorderingMovies,
+      activeMovieId,
+    ]);
+
     const response = await fetch("/api/updateMovieOrder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ movies: newMovies }),
+      body: JSON.stringify({ movies: newMovies, userId: session.user.id }),
     });
 
     if (response.ok) {
       setMovies(newMovies);
     }
+
+    setReorderingMovies((prevReorderingMovies) =>
+      prevReorderingMovies.filter((id) => id !== activeMovieId)
+    );
   };
 
   return (
@@ -122,6 +132,7 @@ export const WatchListProvider = ({ children }) => {
         removeMovieFromWatchList,
         removingMovies,
         updateMovieOrder,
+        reorderingMovies,
       }}
     >
       {children}
