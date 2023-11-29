@@ -47,7 +47,7 @@ export default function WatchList() {
             </div>
           ) : (
             <button
-              className="opacity-0 absolute right-1 top-[4px] text-gray-200 text-xl bg-gray-800 p-px rounded-full shadow-sm cursor-pointer invisible hover:text-red-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
+              className="opacity-0 absolute right-1 top-[4px] text-gray-200 text-xl bg-gray-800 p-px rounded-full shadow-sm cursor-pointer invisible hover:text-red-800 hover:bg-gray-300 duration-200 active:scale-90 active:duration-75"
               onClick={() => removeMovieFromWatchList(movie.id)}
             >
               <BsFillXCircleFill />
@@ -66,7 +66,6 @@ export default function WatchList() {
               <RiDragMove2Fill />
             </button>
           )}
-
           <Image
             src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
             alt={movie.title}

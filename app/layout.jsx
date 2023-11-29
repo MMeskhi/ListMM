@@ -25,7 +25,7 @@ export default async function RootLayout({ children }) {
           <WatchListProvider>
             <ActivePageContextProvider>
               <Navbar />
-              <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-4">
+              <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-2 max-sm:mt-0 ">
                 {children}
               </main>
               <Footer />

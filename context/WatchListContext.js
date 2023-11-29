@@ -1,13 +1,13 @@
 "use client";
 import React, { createContext, useState, useEffect } from "react";
-import { useSession } from "next-auth/react";
+import { useUserSession } from "@/lib/session";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const WatchListContext = createContext();
 
 export const WatchListProvider = ({ children }) => {
-  const { data: session } = useSession();
+  const { session } = useUserSession();
   const [movies, setMovies] = useState([]);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
   const [removingMovies, setRemovingMovies] = useState([]);
