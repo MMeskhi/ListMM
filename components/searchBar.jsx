@@ -23,7 +23,7 @@ export default function SearchBar({ onSearch }) {
       />
       <button
         type="submit"
-        className="absolute top-2/4 -translate-y-2/4 right-0 py-0.5 px-1 border border-gray-800 text-gray-200 bg-gray-800 rounded-sm active:opacity-90 active:scale-95 duration-100"
+        className="absolute top-2/4 -translate-y-2/4 right-0 py-px px-1 mr-0.5 border border-gray-700 text-gray-200 bg-gray-800 rounded-sm active:opacity-95 active:scale-95 duration-100"
       >
         Search
       </button>

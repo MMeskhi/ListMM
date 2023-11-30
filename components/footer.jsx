@@ -2,6 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { SiNextdotjs, SiTailwindcss, SiGithub, SiVercel } from "react-icons/si";
 
 export default function Footer() {
   const pathname = usePathname();
@@ -13,6 +14,7 @@ export default function Footer() {
   const madeByBox = {
     default: { y: -20, opacity: 0 },
     hover: { y: 0, opacity: 1 },
+    exit: { y: -20, opacity: 0 },
   };
 
   return (
@@ -23,13 +25,21 @@ export default function Footer() {
         whileHover="hover"
       >
         <motion.span
-          className="text-gray-300 text-sm absolute -top-36 border border-gray-950 pl-4 pr-16 whitespace-nowrap py-3 bg-gray-800 bg-opacity-60 backdrop-blur-xl rounded-md shadow-sm space-y-2 [&>*]:flex [&>*]:items-center [&>p>svg]:mr-2 pointer-events-none"
+          className="text-gray-300 text-opacity-90 text-sm absolute -top-36 border border-gray-800 border-opacity-80 pl-4 pr-16 whitespace-nowrap py-3 bg-gray-950 bg-opacity-10  backdrop-blur-xl rounded-md shadow-sm space-y-2 [&>*]:flex [&>*]:items-center [&>p>svg]:mr-2 pointer-events-none"
           variants={madeByBox}
         >
-          <p>Next.js for code</p>
-          <p>Tailwind for UI</p>
-          <p>GitHub for versions</p>
-          <p>Vercel for host</p>
+          <p>
+            <SiNextdotjs /> Next.js for code
+          </p>
+          <p>
+            <SiTailwindcss /> Tailwind for UI
+          </p>
+          <p>
+            <SiGithub /> GitHub for versions
+          </p>
+          <p>
+            <SiVercel /> Vercel for host
+          </p>
         </motion.span>
         <motion.div
           className="text-gray-300 text-opacity-95 text-center cursor-default whitespace-nowrap select-none"

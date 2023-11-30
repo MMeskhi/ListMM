@@ -19,14 +19,14 @@ export function Modal() {
           Add
         </Button>
       </DialogTrigger>
-      <DialogContent className="overflow-y-auto max-h-[60vh] max-w-xl bg-gray-200 max-sm:p-3 rounded-sm">
+      <DialogContent className="overflow-y-auto max-h-[64vh] max-w-xl bg-gray-200 max-sm:p-3 rounded-sm border border-gray-800 z-[999]">
         <DialogHeader>
           <DialogTitle>Find The Movie</DialogTitle>
         </DialogHeader>
         <MoviesAdd />
         <DialogFooter className="sm:justify-start">
           <DialogClose asChild>
-            <Button type="button" variant="secondary">
+            <Button type="button" variant="secondary" className="shadow-sm">
               Close
             </Button>
           </DialogClose>

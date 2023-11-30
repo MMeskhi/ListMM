@@ -54,9 +54,14 @@ export default function WatchList() {
             </button>
           )}
           {reorderingMovies.includes(movie.id) ? (
-            <div className="absolute right-1 top-[4px]">
-              <TinySpinner />
-            </div>
+            <>
+              <div className="absolute right-1 top-[30px] z-50">
+                <TinySpinner />
+              </div>
+              <button className="opacity-100 absolute right-1 top-[30px] text-gray-200 text-sm bg-gray-800 p-[3px] rounded-full shadow-sm visible duration-200 cursor-move border border-gray-600 lg:hover:border-gray-400 touch-none">
+                <RiDragMove2Fill />
+              </button>
+            </>
           ) : (
             <button
               {...attributes}

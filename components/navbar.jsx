@@ -38,7 +38,7 @@ export default function Navbar() {
             </Link>
           </motion.div>
           <motion.nav
-            className="absolute m-auto left-0 right-0 w-fit z-[999] bg-gray-800 bg-opacity-80 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:py-4 max-sm:pb-3 max-sm:rounded-t-xl max-sm:rounded-none"
+            className="absolute m-auto left-0 right-0 w-fit z-[999] bg-gray-800 bg-opacity-80 border border-gray-800 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:py-4 max-sm:pb-3 max-sm:rounded-t-xl max-sm:rounded-none"
             initial={{ y: isMobileScreen ? 16 : -24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >

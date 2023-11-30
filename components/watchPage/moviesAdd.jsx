@@ -5,12 +5,12 @@ import SearchResults from "../searchResult";
 import { searchMovies } from "../../lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useSession } from "next-auth/react";
+import { useUserSession } from "@/lib/session";
 import { WatchListContext } from "@/context/WatchListContext";
 
 export default function MoviesAdd() {
   const [results, setResults] = useState([]);
-  const { data: session } = useSession();
+  const { session } = useUserSession();
   const { addMovieToWatchList } = useContext(WatchListContext);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
