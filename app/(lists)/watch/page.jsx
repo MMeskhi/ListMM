@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { Modal } from "@/components/modal";
 import WatchList from "@/components/watchPage/watchList";
 import Loading from "../loading";

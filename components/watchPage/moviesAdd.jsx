@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useContext } from "react";
+import { useState, useContext } from "react";
 import SearchBar from "../searchBar";
 import SearchResults from "../searchResult";
 import { searchMovies } from "../../lib/api";

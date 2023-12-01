@@ -1,5 +1,3 @@
-import React from "react";
-
 export const metadata = {
   title: "Play",
   description: "Play list for games",

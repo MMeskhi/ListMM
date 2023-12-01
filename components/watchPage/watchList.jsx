@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { WatchListContext } from "@/context/WatchListContext";
@@ -19,6 +19,7 @@ import { CSS } from "@dnd-kit/utilities";
 export default function WatchList() {
   const {
     movies,
+    setMovies,
     removeMovieFromWatchList,
     removingMovies,
     updateMovieOrder,
@@ -99,6 +100,7 @@ export default function WatchList() {
       const oldIndex = movies.findIndex((movie) => movie.id === active.id);
       const newIndex = movies.findIndex((movie) => movie.id === over.id);
       const newMovies = arrayMove(movies, oldIndex, newIndex);
+      setMovies(newMovies);
       await updateMovieOrder(newMovies, active.id);
     }
   };
