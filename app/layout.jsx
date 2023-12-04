@@ -5,7 +5,7 @@ import Navbar from "@/components/navbar";
 import constructMetadata from "@/lib/utils";
 import { NextAuthProvider } from "../lib/providers";
 import { ActivePageContextProvider } from "@/context/activePageContext";
-import { WatchPageProvider } from "@/context/WatchPageContext";
+import { WatchPageProvider } from "@/context/watchPageContext";
 
 const inter = Inter({ weight: "700", subsets: ["latin"] });
 
