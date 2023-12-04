@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { WatchPageContext } from "@/context/WatchPageContext";
+import { WatchPageContext } from "@/context/watchPageContext";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { RiDragMove2Fill } from "react-icons/ri";
 import { TinySpinner } from "../loaders";

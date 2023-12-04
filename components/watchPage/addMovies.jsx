@@ -6,7 +6,7 @@ import { searchMovies } from "../../lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserSession } from "@/lib/session";
-import { WatchPageContext } from "@/context/WatchPageContext";
+import { WatchPageContext } from "@/context/watchPageContext";
 
 export default function AddMovies() {
   const [results, setResults] = useState([]);
