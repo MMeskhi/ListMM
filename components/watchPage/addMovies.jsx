@@ -1,17 +1,17 @@
 "use client";
 import { useState, useContext } from "react";
 import SearchBar from "../searchBar";
-import SearchResults from "../searchResult";
+import SearchResults from "./searchResult";
 import { searchMovies } from "../../lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserSession } from "@/lib/session";
-import { WatchListContext } from "@/context/WatchListContext";
+import { WatchPageContext } from "@/context/WatchPageContext";
 
-export default function MoviesAdd() {
+export default function AddMovies() {
   const [results, setResults] = useState([]);
   const { session } = useUserSession();
-  const { addMovieToWatchList } = useContext(WatchListContext);
+  const { addMovieToWatchList } = useContext(WatchPageContext);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [addingMovies, setAddingMovies] = useState([]);
@@ -44,7 +44,7 @@ export default function MoviesAdd() {
   };
 
   return (
-    <div>
+    <>
       <SearchBar onSearch={handleSearch} />
       <SearchResults
         results={results}
@@ -53,6 +53,6 @@ export default function MoviesAdd() {
         hasSearched={hasSearched}
         addingMovies={addingMovies}
       />
-    </div>
+    </>
   );
 }

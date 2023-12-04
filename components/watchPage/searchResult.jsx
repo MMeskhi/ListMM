@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsFillCheckCircleFill } from "react-icons/bs";
-import { Spinner, TinySpinner } from "./loaders";
+import { Spinner, TinySpinner } from "../loaders";
 
 export default function SearchResults({
   results,

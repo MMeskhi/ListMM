@@ -4,9 +4,9 @@ import { useUserSession } from "@/lib/session";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-export const WatchListContext = createContext();
+export const WatchPageContext = createContext();
 
-export const WatchListProvider = ({ children }) => {
+export const WatchPageProvider = ({ children }) => {
   const { session } = useUserSession();
   const [movies, setMovies] = useState([]);
   const [lastUpdate, setLastUpdate] = useState(Date.now());
@@ -53,7 +53,7 @@ export const WatchListProvider = ({ children }) => {
         body: JSON.stringify({
           movieId: movie.id,
           title: movie.title,
-          poster_path: movie.poster_path,
+          image: movie.poster_path,
           userId: session.user.id,
         }),
       });
@@ -124,7 +124,7 @@ export const WatchListProvider = ({ children }) => {
   };
 
   return (
-    <WatchListContext.Provider
+    <WatchPageContext.Provider
       value={{
         movies,
         setMovies,
@@ -136,6 +136,6 @@ export const WatchListProvider = ({ children }) => {
       }}
     >
       {children}
-    </WatchListContext.Provider>
+    </WatchPageContext.Provider>
   );
 };

@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 export async function POST(req) {
   const body = await req.json();
 
-  const { movieId, title, poster_path, userId } = body;
+  const { movieId, title, image, userId } = body;
 
   try {
     const moviesCount = await prisma.movie.count({ where: { userId } });
@@ -14,7 +14,7 @@ export async function POST(req) {
       data: {
         id: String(movieId),
         title,
-        poster_path,
+        image,
         userId,
         order: moviesCount + 1,
       },

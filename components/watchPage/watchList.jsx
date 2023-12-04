@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { WatchListContext } from "@/context/WatchListContext";
+import { WatchPageContext } from "@/context/WatchPageContext";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { RiDragMove2Fill } from "react-icons/ri";
 import { TinySpinner } from "../loaders";
@@ -24,7 +24,7 @@ export default function WatchList() {
     removingMovies,
     updateMovieOrder,
     reorderingMovies,
-  } = useContext(WatchListContext);
+  } = useContext(WatchPageContext);
 
   const SortableMovies = ({ movie }) => {
     const { attributes, listeners, setNodeRef, transform, transition } =
@@ -73,7 +73,7 @@ export default function WatchList() {
             </button>
           )}
           <Image
-            src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
+            src={`https://image.tmdb.org/t/p/w154${movie.image}`}
             alt={movie.title}
             width={100}
             height={100}

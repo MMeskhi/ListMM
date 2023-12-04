@@ -51,12 +51,24 @@ model User {
   accounts      Account[]
   sessions      Session[]
   movies        Movie[]
+  albums        Album[]
 }
 
 model Movie {
   id           String @default(cuid())
   title        String
-  poster_path  String
+  image        String
+  user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+  order        Int
+
+  @@unique([userId, id])
+}
+
+model Album {
+  id           String @default(cuid())
+  title        String
+  image        String
   user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId       String
   order        Int
