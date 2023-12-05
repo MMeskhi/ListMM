@@ -50,7 +50,7 @@ export default function SearchResult({
               </div>
               <h2 className="truncate w-full">
                 <Link
-                  href={album.url}
+                  href={album.id}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-fit hover:text-slate-700 duration-150"

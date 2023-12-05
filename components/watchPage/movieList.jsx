@@ -80,7 +80,7 @@ export default function MovieList() {
             className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full min-h-[140px]"
           />
         </div>
-        <h2 className="truncate text-gray-300 w-full text-sm">
+        <h2 className="truncate text-gray-300 w-full h-fit text-sm">
           <Link
             href={`https://letterboxd.com/tmdb/${movie.id}`}
             target="_blank"
