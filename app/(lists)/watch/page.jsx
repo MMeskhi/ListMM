@@ -1,5 +1,5 @@
 import { Modal } from "@/components/modal";
-import WatchList from "@/components/watchPage/watchList";
+import MovieList from "@/components/watchPage/movieList";
 
 export const metadata = {
   title: "Watch",
@@ -10,7 +10,7 @@ export default function Watch() {
   return (
     <section className="">
       <Modal />
-      <WatchList />
+      <MovieList />
     </section>
   );
 }

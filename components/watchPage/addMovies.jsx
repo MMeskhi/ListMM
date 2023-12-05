@@ -1,7 +1,7 @@
 "use client";
 import { useState, useContext } from "react";
 import SearchBar from "../searchBar";
-import SearchResults from "./searchResult";
+import SearchResult from "./searchResult";
 import { searchMovies } from "../../lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -46,7 +46,7 @@ export default function AddMovies() {
   return (
     <>
       <SearchBar onSearch={handleSearch} />
-      <SearchResults
+      <SearchResult
         results={results}
         onMovieClick={addMovieToList}
         isLoading={isLoading}

@@ -16,13 +16,13 @@ export async function POST(req) {
       },
     });
     return new Response(
-      JSON.stringify({ message: "Movie removed from WatchList" }),
+      JSON.stringify({ message: "Movie removed from List" }),
       { status: 200 }
     );
   } catch (error) {
     console.error(error);
     return new Response(
-      JSON.stringify({ message: "Failed to remove movie from WatchList" }),
+      JSON.stringify({ message: "Failed to remove movie from List" }),
       { status: 500 }
     );
   }

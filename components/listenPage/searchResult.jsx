@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 import { Spinner } from "../loaders";
 
-export default function SearchResultAlbums({
+export default function SearchResult({
   results,
   onAlbumClick,
   isLoading,

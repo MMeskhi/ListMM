@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SearchBar from "../searchBar";
-import SearchResultAlbums from "./searchResultAlbums";
+import SearchResult from "./searchResult";
 import { useUserSession } from "@/lib/session";
 import { searchAlbums } from "@/lib/api";
 
@@ -21,7 +21,7 @@ export default function AddAlbums() {
   return (
     <>
       <SearchBar onSearch={handleSearch} />
-      <SearchResultAlbums
+      <SearchResult
         results={results}
         isLoading={isLoading}
         hasSearched={hasSearched}

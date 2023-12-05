@@ -16,7 +16,7 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export default function WatchList() {
+export default function MovieList() {
   const {
     movies,
     setMovies,
