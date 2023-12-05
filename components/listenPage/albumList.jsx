@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { WatchPageContext } from "@/context/watchPageContext";
+import { ListenPageContext } from "@/context/listenPageContext";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { RiDragMove2Fill } from "react-icons/ri";
 import { TinySpinner } from "../loaders";
@@ -16,19 +16,19 @@ import {
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
 
-export default function MovieList() {
+export default function AlbumList() {
   const {
-    movies,
-    setMovies,
-    removeMovie,
-    removingMovies,
-    updateMovieOrder,
-    reorderingMovies,
-  } = useContext(WatchPageContext);
+    albums,
+    setAlbums,
+    removeAlbum,
+    removingAlbums,
+    updateAlbumOrder,
+    reorderingAlbums,
+  } = useContext(ListenPageContext);
 
-  const SortableMovies = ({ movie }) => {
+  const SortableAlbums = ({ album }) => {
     const { attributes, listeners, setNodeRef, transform, transition } =
-      useSortable({ id: movie.id });
+      useSortable({ id: album.id });
 
     const style = {
       transition,
@@ -42,19 +42,19 @@ export default function MovieList() {
         className="rounded-sm w-auto flex flex-col justify-between"
       >
         <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>button]:hover:opacity-100 [&>button]:hover:visible select-none h-full">
-          {removingMovies.includes(movie.id) ? (
+          {removingAlbums.includes(album.id) ? (
             <div className="absolute right-1 top-[4px]">
               <TinySpinner />
             </div>
           ) : (
             <button
               className="opacity-0 absolute right-1 top-[4px] text-gray-200 text-xl bg-gray-800 p-px rounded-full shadow-sm cursor-pointer invisible hover:text-red-800 hover:bg-gray-300 duration-200 active:scale-90 active:duration-75"
-              onClick={() => removeMovie(movie.id)}
+              onClick={() => removeAlbum(album.id)}
             >
               <BsFillXCircleFill />
             </button>
           )}
-          {reorderingMovies.includes(movie.id) ? (
+          {reorderingAlbums.includes(album.id) ? (
             <>
               <div className="absolute right-1 top-[30px] z-50">
                 <TinySpinner />
@@ -73,8 +73,8 @@ export default function MovieList() {
             </button>
           )}
           <Image
-            src={`https://image.tmdb.org/t/p/w154${movie.image}`}
-            alt={movie.title}
+            src={`https://image.tmdb.org/t/p/w154${album.image}`}
+            alt={album.title}
             width={100}
             height={100}
             className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full min-h-[140px]"
@@ -82,12 +82,12 @@ export default function MovieList() {
         </div>
         <h2 className="truncate text-gray-300 w-full text-sm">
           <Link
-            href={`https://letterboxd.com/tmdb/${movie.id}`}
+            href={`https://letterboxd.com/tmdb/${album.id}`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-fit hover:text-slate-200 duration-150"
           >
-            {movie.title}
+            {album.title}
           </Link>
         </h2>
       </li>
@@ -97,11 +97,11 @@ export default function MovieList() {
   const onDragEnd = async (event) => {
     const { active, over } = event;
     if (active.id !== over.id) {
-      const oldIndex = movies.findIndex((movie) => movie.id === active.id);
-      const newIndex = movies.findIndex((movie) => movie.id === over.id);
-      const newMovies = arrayMove(movies, oldIndex, newIndex);
-      setMovies(newMovies);
-      await updateMovieOrder(newMovies, active.id);
+      const oldIndex = albums.findIndex((album) => album.id === active.id);
+      const newIndex = albums.findIndex((album) => album.id === over.id);
+      const newAlbums = arrayMove(albums, oldIndex, newIndex);
+      setAlbums(newAlbums);
+      await updateAlbumOrder(newAlbums, active.id);
     }
   };
 
@@ -112,10 +112,10 @@ export default function MovieList() {
       animate={{ y: 0, opacity: 1 }}
     >
       <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
-        <SortableContext items={movies} strategy={rectSortingStrategy}>
-          {movies &&
-            movies.map((movie) => (
-              <SortableMovies key={movie.id} movie={movie} />
+        <SortableContext items={albums} strategy={rectSortingStrategy}>
+          {albums &&
+            albums.map((album) => (
+              <SortableAlbums key={album.id} album={album} />
             ))}
         </SortableContext>
       </DndContext>

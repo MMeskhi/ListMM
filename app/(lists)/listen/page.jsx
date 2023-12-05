@@ -1,4 +1,5 @@
 import { Modal } from "@/components/modal";
+import AlbumList from "@/components/listenPage/albumList";
 
 export const metadata = {
   title: "Listen",
@@ -6,5 +7,10 @@ export const metadata = {
 };
 
 export default function Listen() {
-  return <Modal />;
+  return (
+    <section className="">
+      <Modal />
+      <AlbumList />
+    </section>
+  );
 }

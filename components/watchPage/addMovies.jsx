@@ -11,7 +11,7 @@ import { WatchPageContext } from "@/context/watchPageContext";
 export default function AddMovies() {
   const [results, setResults] = useState([]);
   const { session } = useUserSession();
-  const { addMovieToWatchList } = useContext(WatchPageContext);
+  const { addMovie } = useContext(WatchPageContext);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [addingMovies, setAddingMovies] = useState([]);
@@ -32,10 +32,10 @@ export default function AddMovies() {
     setAddingMovies((prevAddingMovies) => [...prevAddingMovies, movie.id]);
 
     try {
-      await addMovieToWatchList(movie);
+      await addMovie(movie);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to add movie to WatchList");
+      toast.error("Failed to add movie to the List");
     } finally {
       setAddingMovies((prevAddingMovies) =>
         prevAddingMovies.filter((id) => id !== movie.id)

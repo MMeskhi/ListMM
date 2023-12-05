@@ -6,6 +6,7 @@ import constructMetadata from "@/lib/utils";
 import { NextAuthProvider } from "../lib/providers";
 import { ActivePageContextProvider } from "@/context/activePageContext";
 import { WatchPageProvider } from "@/context/watchPageContext";
+import { ListenPageProvider } from "@/context/listenPageContext";
 
 const inter = Inter({ weight: "700", subsets: ["latin"] });
 
@@ -23,13 +24,15 @@ export default async function RootLayout({ children }) {
       >
         <NextAuthProvider>
           <WatchPageProvider>
-            <ActivePageContextProvider>
-              <Navbar />
-              <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-2 max-sm:mt-0 ">
-                {children}
-              </main>
-              <Footer />
-            </ActivePageContextProvider>
+            <ListenPageProvider>
+              <ActivePageContextProvider>
+                <Navbar />
+                <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-2 max-sm:mt-0 ">
+                  {children}
+                </main>
+                <Footer />
+              </ActivePageContextProvider>
+            </ListenPageProvider>
           </WatchPageProvider>
         </NextAuthProvider>
       </body>

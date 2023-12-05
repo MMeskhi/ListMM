@@ -1,13 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 import { BsFillCheckCircleFill } from "react-icons/bs";
-import { Spinner } from "../loaders";
+import { Spinner, TinySpinner } from "../loaders";
 
 export default function SearchResult({
   results,
   onAlbumClick,
   isLoading,
   hasSearched,
+  addingAlbums,
 }) {
   if (hasSearched && results.length === 0) {
     return <p className="text-slate-700">No results found</p>;
@@ -25,14 +26,20 @@ export default function SearchResult({
               className="rounded-sm flex flex-col justify-between"
             >
               <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-full">
-                <span
-                  className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-xl bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
-                  onClick={() => {
-                    onAlbumClick(album);
-                  }}
-                >
-                  <BsFillCheckCircleFill />
-                </span>
+                {addingAlbums.includes(album.id) ? (
+                  <div className="absolute right-1.5 top-1.5">
+                    <TinySpinner />
+                  </div>
+                ) : (
+                  <span
+                    className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-xl bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
+                    onClick={() => {
+                      onAlbumClick(album);
+                    }}
+                  >
+                    <BsFillCheckCircleFill />
+                  </span>
+                )}
                 <Image
                   src={album.image}
                   alt={album.name}

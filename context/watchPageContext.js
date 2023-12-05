@@ -14,7 +14,7 @@ export const WatchPageProvider = ({ children }) => {
   const [reorderingMovies, setReorderingMovies] = useState([]);
 
   useEffect(() => {
-    const fetchWatchList = async () => {
+    const fetchList = async () => {
       if (session) {
         try {
           const response = await fetch("/api/watchPage/getMovieList", {
@@ -31,8 +31,8 @@ export const WatchPageProvider = ({ children }) => {
             const data = await response.json();
             setMovies(data.movies);
           } else {
-            console.error("Failed to fetch WatchList");
-            toast.error("Failed to load the WatchList");
+            console.error("Failed to fetch the List");
+            toast.error("Failed to load the the List");
           }
         } catch (error) {
           console.error(error);
@@ -40,10 +40,10 @@ export const WatchPageProvider = ({ children }) => {
       }
     };
 
-    fetchWatchList();
+    fetchList();
   }, [session, lastUpdate]);
 
-  const addMovieToWatchList = async (movie) => {
+  const addMovie = async (movie) => {
     try {
       const response = await fetch("/api/watchPage/addMovie", {
         method: "POST",
@@ -60,9 +60,9 @@ export const WatchPageProvider = ({ children }) => {
 
       if (response.ok) {
         setLastUpdate(Date.now());
-        toast.success("Movie added to WatchList");
+        toast.success("Movie added to the List");
       } else {
-        toast.error("Failed to add movie to WatchList");
+        toast.error("Failed to add movie to the List");
       }
     } catch (error) {
       console.error(error);
@@ -70,7 +70,7 @@ export const WatchPageProvider = ({ children }) => {
     }
   };
 
-  const removeMovieFromWatchList = async (movieId) => {
+  const removeMovie = async (movieId) => {
     setRemovingMovies((prevRemovingMovies) => [...prevRemovingMovies, movieId]);
     try {
       const response = await fetch("/api/watchPage/removeMovie", {
@@ -86,9 +86,9 @@ export const WatchPageProvider = ({ children }) => {
 
       if (response.ok) {
         setLastUpdate(Date.now());
-        toast.success("Movie removed from WatchList");
+        toast.success("Movie removed from the List");
       } else {
-        toast.error("Failed to remove movie from WatchList");
+        toast.error("Failed to remove movie from the List");
       }
     } catch (error) {
       console.error(error);
@@ -128,8 +128,8 @@ export const WatchPageProvider = ({ children }) => {
       value={{
         movies,
         setMovies,
-        addMovieToWatchList,
-        removeMovieFromWatchList,
+        addMovie,
+        removeMovie,
         removingMovies,
         updateMovieOrder,
         reorderingMovies,

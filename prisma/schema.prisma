@@ -52,7 +52,7 @@ model User {
   sessions      Session[]
   movies        Movie[]
   albums        Album[]
-  games          Game[]
+  games         Game[]
 }
 
 model Movie {
