@@ -22,7 +22,7 @@ export default function SearchResult({
           .filter((album) => album.image)
           .map((album) => (
             <div
-              key={album.url}
+              key={album.id}
               className="rounded-sm flex flex-col justify-between"
             >
               <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-full">

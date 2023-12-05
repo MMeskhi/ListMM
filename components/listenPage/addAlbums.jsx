@@ -35,7 +35,7 @@ export default function AddAlbums() {
       await addAlbum(album);
     } catch (error) {
       console.error(error);
-      toast.error("Failed to add Album to the List");
+      toast.error("Failed to add album to the List");
     } finally {
       setAddingAlbums((prevAddingAlbums) =>
         prevAddingAlbums.filter((id) => id !== album.id)

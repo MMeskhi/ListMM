@@ -73,7 +73,7 @@ export default function AlbumList() {
             </button>
           )}
           <Image
-            src={`https://image.tmdb.org/t/p/w154${album.image}`}
+            src={album.image}
             alt={album.title}
             width={100}
             height={100}
@@ -82,7 +82,7 @@ export default function AlbumList() {
         </div>
         <h2 className="truncate text-gray-300 w-full text-sm">
           <Link
-            href={`https://letterboxd.com/tmdb/${album.id}`}
+            href={`/`}
             target="_blank"
             rel="noopener noreferrer"
             className="w-fit hover:text-slate-200 duration-150"

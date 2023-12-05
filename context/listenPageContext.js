@@ -52,8 +52,8 @@ export const ListenPageProvider = ({ children }) => {
         },
         body: JSON.stringify({
           albumId: album.id,
-          title: album.title,
-          image: album.poster_path,
+          title: album.name,
+          image: album.image,
           userId: session.user.id,
         }),
       });
