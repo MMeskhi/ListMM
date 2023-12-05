@@ -16,6 +16,14 @@ export const authOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   callbacks: {
     session: async ({ session, token }) => {
+      const userExists = await prisma.user.findUnique({
+        where: { id: token.uid },
+      });
+
+      if (!userExists) {
+        return {};
+      }
+
       if (session?.user) {
         session.user.id = token.uid;
       }
