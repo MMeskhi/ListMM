@@ -2,7 +2,7 @@
 import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { WatchPageContext } from "@/context/watchPageContext";
+import { PlayPageContext } from "@/context/playPageContext";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { RiDragMove2Fill } from "react-icons/ri";
 import { TinySpinner } from "../loaders";
@@ -24,7 +24,7 @@ export default function GameList() {
     removingGames,
     updateGameOrder,
     reorderingGames,
-  } = useContext(WatchPageContext);
+  } = useContext(PlayPageContext);
 
   const SortableGames = ({ game }) => {
     const { attributes, listeners, setNodeRef, transform, transition } =
@@ -73,7 +73,7 @@ export default function GameList() {
             </button>
           )}
           <Image
-            src={`https://image.tmdb.org/t/p/w154${game.image}`}
+            src={game.image}
             alt={game.title}
             width={100}
             height={100}
@@ -83,7 +83,7 @@ export default function GameList() {
         </div>
         <h2 className="truncate text-gray-300 w-full h-fit text-sm">
           <Link
-            href={`https://letterboxd.com/tmdb/${game.id}`}
+            href={game.url.replace(/igdb/g, "backloggd")}
             target="_blank"
             rel="noopener noreferrer"
             className="w-fit hover:text-slate-200 duration-150"

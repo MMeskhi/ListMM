@@ -6,12 +6,12 @@ import { searchGames } from "../../lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserSession } from "@/lib/session";
-import { WatchPageContext } from "@/context/watchPageContext";
+import { PlayPageContext } from "@/context/playPageContext";
 
 export default function AddGames() {
   const [results, setResults] = useState([]);
   const { session } = useUserSession();
-  const { addGame } = useContext(WatchPageContext);
+  const { addGame } = useContext(PlayPageContext);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [addingGames, setAddingGames] = useState([]);

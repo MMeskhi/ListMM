@@ -81,6 +81,7 @@ model Game {
   id           String @default(cuid())
   title        String
   image        String
+  url          String
   user         User   @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId       String
   order        Int

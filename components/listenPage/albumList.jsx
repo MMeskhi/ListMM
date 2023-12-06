@@ -78,7 +78,7 @@ export default function AlbumList() {
             width={100}
             height={100}
             unoptimized
-            className="object-cover rounded-sm w-full h-full min-h-[100px]"
+            className="object-cover rounded-sm w-full h-full min-h-[88px]"
           />
         </div>
         <h2 className="truncate text-gray-300 w-full h-full text-sm">
@@ -108,7 +108,7 @@ export default function AlbumList() {
 
   return (
     <motion.ul
-      className="mt-4 h-full grid grid-cols-11 gap-3 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-10"
+      className="mt-4 h-full grid grid-cols-10 gap-3 max-sm:gap-2 max-xs:grid-cols-3 max-sm:grid-cols-4 max-md:grid-cols-5 max-lg:grid-cols-6 max-xl:grid-cols-8 max-xl2:grid-cols-9"
       initial={{ y: 24, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
     >

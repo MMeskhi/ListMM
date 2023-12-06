@@ -5,7 +5,7 @@ const prisma = new PrismaClient();
 export async function POST(req) {
   const body = await req.json();
 
-  const { gameId, title, image, userId } = body;
+  const { gameId, title, image, url, userId } = body;
 
   try {
     const gamesCount = await prisma.game.count({ where: { userId } });
@@ -15,6 +15,7 @@ export async function POST(req) {
         id: String(gameId),
         title,
         image,
+        url,
         userId,
         order: gamesCount + 1,
       },
