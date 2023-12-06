@@ -23,6 +23,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: "/api/igdb/v4/games",
+        destination: "https://api.igdb.com/v4/games",
+      },
+    ];
+  },
 };
 
 module.exports = nextConfig;

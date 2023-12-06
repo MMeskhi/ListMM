@@ -77,6 +77,7 @@ export default function AlbumList() {
             alt={album.title}
             width={100}
             height={100}
+            unoptimized
             className="object-cover rounded-sm w-full h-full min-h-[100px]"
           />
         </div>

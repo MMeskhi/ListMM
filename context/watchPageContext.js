@@ -52,8 +52,8 @@ export const WatchPageProvider = ({ children }) => {
         },
         body: JSON.stringify({
           movieId: movie.id,
-          title: movie.title,
-          image: movie.poster_path,
+          title: movie.name,
+          image: movie.image,
           userId: session.user.id,
         }),
       });

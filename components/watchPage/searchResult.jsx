@@ -18,48 +18,47 @@ export default function SearchResult({
       {isLoading ? (
         <Spinner />
       ) : (
-        results
-          .filter((movie) => movie.poster_path)
-          .map((movie) => (
-            <div
-              key={movie.id}
-              className="rounded-sm flex flex-col justify-between"
-            >
-              <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-full">
-                {addingMovies.includes(movie.id) ? (
-                  <div className="absolute right-1.5 top-1.5">
-                    <TinySpinner />
-                  </div>
-                ) : (
-                  <span
-                    className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-xl bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
-                    onClick={() => {
-                      onMovieClick(movie);
-                    }}
-                  >
-                    <BsFillCheckCircleFill />
-                  </span>
-                )}
-                <Image
-                  src={`https://image.tmdb.org/t/p/w154${movie.poster_path}`}
-                  alt={movie.title}
-                  width={100}
-                  height={100}
-                  className="object-cover rounded-sm w-full h-full min-h-[140px] shadow-sm"
-                />
-              </div>
-              <h2 className="truncate w-full">
-                <Link
-                  href={`https://letterboxd.com/tmdb/${movie.id}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-fit hover:text-slate-700 duration-150"
+        results.map((movie) => (
+          <div
+            key={movie.id}
+            className="rounded-sm flex flex-col justify-between"
+          >
+            <div className="relative hover:before:bg-gray-900 before:absolute before:inset-0 before:rounded-sm hover:before:opacity-40 before:duration-300 [&>span]:hover:opacity-100 select-none h-full">
+              {addingMovies.includes(movie.id) ? (
+                <div className="absolute right-1.5 top-1.5">
+                  <TinySpinner />
+                </div>
+              ) : (
+                <span
+                  className="opacity-0 absolute right-1.5 top-1.5 text-gray-200 text-xl bg-slate-800 p-px rounded-full shadow-sm cursor-pointer hover:text-gray-800 hover:bg-gray-200 duration-200 active:scale-90 active:duration-75"
+                  onClick={() => {
+                    onMovieClick(movie);
+                  }}
                 >
-                  {movie.title}
-                </Link>
-              </h2>
+                  <BsFillCheckCircleFill />
+                </span>
+              )}
+              <Image
+                src={movie.image}
+                alt={movie.name}
+                width={100}
+                height={100}
+                unoptimized
+                className="object-cover rounded-sm w-full h-full min-h-[140px] shadow-sm"
+              />
             </div>
-          ))
+            <h2 className="truncate w-full">
+              <Link
+                href={`https://letterboxd.com/tmdb/${movie.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-fit hover:text-slate-700 duration-150"
+              >
+                {movie.name}
+              </Link>
+            </h2>
+          </div>
+        ))
       )}
     </div>
   );

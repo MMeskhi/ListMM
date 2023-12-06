@@ -1,3 +1,5 @@
+import { Modal } from "@/components/modal";
+
 export const metadata = {
   title: "Play",
   description: "Play list for games",
@@ -5,8 +7,8 @@ export const metadata = {
 
 export default function Play() {
   return (
-    <div>
-      <h2 className="text-slate-200">Coming Soon!</h2>
-    </div>
+    <section className="">
+      <Modal />
+    </section>
   );
 }
