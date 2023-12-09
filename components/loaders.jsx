@@ -46,7 +46,7 @@ export function TinySpinner() {
     <div role="status">
       <svg
         aria-hidden="true"
-        className="w-[22px] h-[22px] text-gray-700 animate-spin fill-gray-300"
+        className="w-5 h-5 text-gray-700 animate-spin fill-gray-300"
         viewBox="0 0 100 101"
         fill="none"
       >

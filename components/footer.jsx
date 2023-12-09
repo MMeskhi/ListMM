@@ -17,14 +17,14 @@ export default function Footer() {
   };
 
   return (
-    <footer className="container mx-auto px-28 xl:px-20 max-w-6xl mt-8 mb-4 flex justify-center items-center relative z-[88]">
+    <footer className="container mx-auto px-28 xl:px-20 max-w-6xl mt-8 mb-4 flex justify-center items-center relative z-[88] max-sm:hidden">
       <motion.div
         className="flex flex-col justify-center items-center w-fit relative"
         initial="default"
         whileHover="hover"
       >
         <motion.span
-          className="text-gray-300 text-opacity-90 text-sm absolute -top-36 border border-gray-800 border-opacity-80 pl-4 pr-16 whitespace-nowrap py-3 bg-gray-950 bg-opacity-10  backdrop-blur-xl rounded-md shadow-sm space-y-2 [&>*]:flex [&>*]:items-center [&>p>svg]:mr-2 pointer-events-none max-sm:hidden"
+          className="text-gray-300 text-opacity-90 text-sm absolute -top-36 border border-gray-800 border-opacity-80 pl-4 pr-16 whitespace-nowrap py-3 bg-gray-950 bg-opacity-10  backdrop-blur-xl rounded-md shadow-sm space-y-2 [&>*]:flex [&>*]:items-center [&>p>svg]:mr-2 pointer-events-none"
           variants={madeByBox}
         >
           <p>

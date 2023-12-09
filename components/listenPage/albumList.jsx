@@ -27,12 +27,19 @@ export default function AlbumList() {
   } = useContext(ListenPageContext);
 
   const SortableAlbums = ({ album }) => {
-    const { attributes, listeners, setNodeRef, transform, transition } =
-      useSortable({ id: album.id });
+    const {
+      attributes,
+      listeners,
+      setNodeRef,
+      transform,
+      transition,
+      isDragging,
+    } = useSortable({ id: album.id });
 
     const style = {
       transition,
       transform: CSS.Transform.toString(transform),
+      zIndex: isDragging ? 1000 : 1,
     };
 
     return (
@@ -77,7 +84,6 @@ export default function AlbumList() {
             alt={album.title}
             width={100}
             height={100}
-            unoptimized
             className="object-cover rounded-sm w-full h-full min-h-[88px]"
           />
         </div>

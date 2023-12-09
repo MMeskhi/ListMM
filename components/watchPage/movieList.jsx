@@ -27,12 +27,19 @@ export default function MovieList() {
   } = useContext(WatchPageContext);
 
   const SortableMovies = ({ movie }) => {
-    const { attributes, listeners, setNodeRef, transform, transition } =
-      useSortable({ id: movie.id });
+    const {
+      attributes,
+      listeners,
+      setNodeRef,
+      transform,
+      transition,
+      isDragging,
+    } = useSortable({ id: movie.id });
 
     const style = {
       transition,
       transform: CSS.Transform.toString(transform),
+      zIndex: isDragging ? 1000 : 1,
     };
 
     return (
@@ -77,8 +84,7 @@ export default function MovieList() {
             alt={movie.title}
             width={100}
             height={100}
-            unoptimized
-            className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full min-h-[140px]"
+            className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full min-h-[140px] max-h-[180px]"
           />
         </div>
         <h2 className="truncate text-gray-300 w-full h-fit text-sm">

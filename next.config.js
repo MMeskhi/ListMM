@@ -21,6 +21,11 @@ const nextConfig = {
         hostname: "lastfm.freetls.fastly.net",
         pathname: "**",
       },
+      {
+        protocol: "https",
+        hostname: "images.igdb.com",
+        pathname: "**",
+      },
     ],
   },
   async rewrites() {

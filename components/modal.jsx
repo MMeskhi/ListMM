@@ -1,5 +1,4 @@
 "use client";
-import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogClose,
@@ -23,9 +22,9 @@ export function Modal() {
     return (
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" size="sm">
+          <button className="text-gray-800 bg-gray-300 rounded-sm shadow-sm px-3 py-1 hover:opacity-95 active:scale-95 duration-150">
             Add
-          </Button>
+          </button>
         </DialogTrigger>
         <DialogContent className="overflow-y-auto max-h-[64vh] max-w-xl bg-gray-200 max-sm:p-3 rounded-sm border border-gray-800 z-[999]">
           <DialogHeader>
@@ -34,9 +33,9 @@ export function Modal() {
           <AddMovies />
           <DialogFooter className="sm:justify-start">
             <DialogClose asChild>
-              <Button type="button" variant="secondary" className="shadow-sm">
+              <button className="bg-gray-800 text-gray-300 rounded-sm shadow-sm px-3 py-1 hover:opacity-95 active:scale-95 duration-150">
                 Close
-              </Button>
+              </button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>
@@ -46,9 +45,9 @@ export function Modal() {
     return (
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" size="sm">
+          <button className="text-gray-800 bg-gray-300 rounded-sm shadow-sm px-3 py-1 hover:opacity-95 active:scale-95 duration-150">
             Add
-          </Button>
+          </button>
         </DialogTrigger>
         <DialogContent className="overflow-y-auto max-h-[64vh] max-w-xl bg-gray-200 max-sm:p-3 rounded-sm border border-gray-800 z-[999]">
           <DialogHeader>
@@ -57,9 +56,9 @@ export function Modal() {
           <AddAlbums />
           <DialogFooter className="sm:justify-start">
             <DialogClose asChild>
-              <Button type="button" variant="secondary" className="shadow-sm">
+              <button className="bg-gray-800 text-gray-300 rounded-sm shadow-sm px-3 py-1 hover:opacity-95 active:scale-95 duration-150">
                 Close
-              </Button>
+              </button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>
@@ -69,9 +68,9 @@ export function Modal() {
     return (
       <Dialog>
         <DialogTrigger asChild>
-          <Button variant="outline" size="sm">
+          <button className="text-gray-800 bg-gray-300 rounded-sm shadow-sm px-3 py-1 hover:opacity-95 active:scale-95 duration-150">
             Add
-          </Button>
+          </button>
         </DialogTrigger>
         <DialogContent className="overflow-y-auto max-h-[64vh] max-w-xl bg-gray-200 max-sm:p-3 rounded-sm border border-gray-800 z-[999]">
           <DialogHeader>
@@ -80,9 +79,9 @@ export function Modal() {
           <AddGames />
           <DialogFooter className="sm:justify-start">
             <DialogClose asChild>
-              <Button type="button" variant="secondary" className="shadow-sm">
+              <button className="bg-gray-800 text-gray-300 rounded-sm shadow-sm px-3 py-1 hover:opacity-95 active:scale-95 duration-150">
                 Close
-              </Button>
+              </button>
             </DialogClose>
           </DialogFooter>
         </DialogContent>
