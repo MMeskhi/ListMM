@@ -1,10 +1,5 @@
 "use client";
-import React, {
-  createContext,
-  useState,
-  useLayoutEffect,
-  useCallback,
-} from "react";
+import React, { createContext, useState, useEffect, useCallback } from "react";
 import { useUserSession } from "@/lib/session";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -44,7 +39,7 @@ export const ListenPageProvider = ({ children }) => {
     }
   }, [session]);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     fetchList();
   }, [fetchList, lastUpdate]);
 
