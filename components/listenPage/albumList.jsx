@@ -92,6 +92,7 @@ export default function AlbumList() {
             href={album.id}
             target="_blank"
             rel="noopener noreferrer"
+            title={album.title}
             className="w-fit hover:text-slate-200 duration-150"
           >
             {album.title}

@@ -92,6 +92,7 @@ export default function MovieList() {
             href={`https://letterboxd.com/tmdb/${movie.id}`}
             target="_blank"
             rel="noopener noreferrer"
+            title={movie.title}
             className="w-fit hover:text-slate-200 duration-150"
           >
             {movie.title}

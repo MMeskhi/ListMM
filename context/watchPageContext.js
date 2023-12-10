@@ -1,5 +1,10 @@
 "use client";
-import React, { createContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useState,
+  useLayoutEffect,
+  useCallback,
+} from "react";
 import { useUserSession } from "@/lib/session";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -13,35 +18,35 @@ export const WatchPageProvider = ({ children }) => {
   const [removingMovies, setRemovingMovies] = useState([]);
   const [reorderingMovies, setReorderingMovies] = useState([]);
 
-  useEffect(() => {
-    const fetchList = async () => {
-      if (session) {
-        try {
-          const response = await fetch("/api/watchPage/getMovieList", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              userId: session.user.id,
-            }),
-          });
+  const fetchList = useCallback(async () => {
+    if (session) {
+      try {
+        const response = await fetch("/api/watchPage/getMovieList", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: session.user.id,
+          }),
+        });
 
-          if (response.ok) {
-            const data = await response.json();
-            setMovies(data.movies);
-          } else {
-            console.error("Failed to fetch the List");
-            toast.error("Failed to load the the List");
-          }
-        } catch (error) {
-          console.error(error);
+        if (response.ok) {
+          const data = await response.json();
+          setMovies(data.movies);
+        } else {
+          console.error("Failed to fetch the List");
+          toast.error("Failed to load the the List");
         }
+      } catch (error) {
+        console.error(error);
       }
-    };
+    }
+  }, [session]);
 
+  useLayoutEffect(() => {
     fetchList();
-  }, [session, lastUpdate]);
+  }, [fetchList, lastUpdate]);
 
   const addMovie = async (movie) => {
     try {

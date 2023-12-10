@@ -9,13 +9,13 @@ import { links } from "@/lib/data";
 import clsx from "clsx";
 import { useActivePageContext } from "@/context/activePageContext";
 import { NavSkeleton, TinySpinner } from "./loaders";
-import useMediaQuery from "@mui/material/useMediaQuery";
 
 export default function Navbar() {
   const { status, session } = useUserSession();
   const [loading, setLoading] = useState(false);
-
-  const isMobileScreen = useMediaQuery("(max-width:600px)");
+  const [windowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 0
+  );
 
   const { activePage, setActivePage, setTimeOfLastClick } =
     useActivePageContext();
@@ -29,7 +29,7 @@ export default function Navbar() {
       {status === "authenticated" ? (
         <div className="flex justify-between items-center gap-8">
           <motion.div
-            initial={{ x: isMobileScreen ? -16 : -24, opacity: 0 }}
+            initial={{ x: windowWidth < 600 ? -16 : -24, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
           >
             <Link href="/" className="text-gray-300 text-3xl">
@@ -39,7 +39,7 @@ export default function Navbar() {
           </motion.div>
           <motion.nav
             className="absolute m-auto left-0 right-0 w-fit z-[999] bg-gray-800 bg-opacity-80 border border-gray-800 backdrop-blur-xl rounded-3xl py-3 px-6 shadow-sm max-sm:fixed max-sm:inset-x-0 max-sm:bottom-0 max-sm:py-4 max-sm:pb-3 max-sm:rounded-t-xl max-sm:rounded-none"
-            initial={{ y: isMobileScreen ? 16 : -24, opacity: 0 }}
+            initial={{ y: windowWidth ? 16 : -24, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
           >
             <ul className="flex justify-center items-center space-x-8 max-xs:space-x-4">
@@ -78,7 +78,7 @@ export default function Navbar() {
           </motion.nav>
           <motion.div
             className="flex gap-2"
-            initial={{ x: isMobileScreen ? 16 : 24, opacity: 0 }}
+            initial={{ x: windowWidth ? 16 : 24, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
           >
             <Image
@@ -103,7 +103,7 @@ export default function Navbar() {
       ) : (
         <div className="flex justify-between items-center">
           <motion.div
-            initial={{ x: isMobileScreen ? -8 : -24, opacity: 0 }}
+            initial={{ x: windowWidth ? -8 : -24, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
           >
             <Link href="/" className="text-gray-300 text-3xl">
@@ -113,7 +113,7 @@ export default function Navbar() {
           </motion.div>
           <motion.div
             className="flex justify-center items-center py-px"
-            initial={{ x: isMobileScreen ? 8 : 24, opacity: 0 }}
+            initial={{ x: windowWidth ? 8 : 24, opacity: 0 }}
             animate={{ x: 0, opacity: 1 }}
           >
             <button

@@ -92,6 +92,7 @@ export default function GameList() {
             href={game.url.replace(/igdb/g, "backloggd")}
             target="_blank"
             rel="noopener noreferrer"
+            title={game.title}
             className="w-fit hover:text-slate-200 duration-150"
           >
             {game.title}
