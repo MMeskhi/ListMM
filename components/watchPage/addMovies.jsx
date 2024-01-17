@@ -2,6 +2,7 @@
 import { useState, useContext } from "react";
 import SearchBar from "../searchBar";
 import SearchResult from "./searchResult";
+import { searchMovies } from "../../lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useUserSession } from "@/lib/session";
@@ -17,10 +18,7 @@ export default function AddMovies() {
 
   const handleSearch = async (movieName) => {
     setIsLoading(true);
-    const response = await fetch(
-      `/api/services/searchMovies?movieName=${movieName}`
-    );
-    const newResults = await response.json();
+    const newResults = await searchMovies(movieName);
     setResults(newResults);
     setIsLoading(false);
     setHasSearched(true);
