@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useUserSession, userSignIn, userSignOut } from "../lib/session";
 import Image from "next/image";
@@ -7,18 +7,33 @@ import { AiOutlineLogout, AiOutlineGoogle } from "react-icons/ai";
 import { motion } from "framer-motion";
 import { links } from "@/lib/data";
 import clsx from "clsx";
-import { useActivePageContext } from "@/context/activePageContext";
 import { NavSkeleton, TinySpinner } from "./loaders";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+  const pathname = usePathname();
+
   const { status, session } = useUserSession();
-  const [loading, setLoading] = useState(false);
+
   const [windowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 0
   );
 
-  const { activePage, setActivePage, setTimeOfLastClick } =
-    useActivePageContext();
+  const [loading, setLoading] = useState(false);
+  const [activePage, setActivePage] = useState("Watch");
+  const [timeOfLastClick, setTimeOfLastClick] = useState(0);
+
+  useEffect(() => {
+    if (pathname === "/") {
+      setActivePage(null);
+    } else if (pathname === "/listen") {
+      setActivePage("Listen");
+    } else if (pathname === "/play") {
+      setActivePage("Play");
+    } else {
+      setActivePage("Watch");
+    }
+  }, [pathname]);
 
   if (status === "loading") {
     return <NavSkeleton />;

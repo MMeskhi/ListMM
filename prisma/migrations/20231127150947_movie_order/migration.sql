@@ -1,3 +1,0 @@
--- AlterTable
-ALTER TABLE "Movie" ALTER COLUMN "order" DROP NOT NULL,
-ALTER COLUMN "order" DROP DEFAULT;
