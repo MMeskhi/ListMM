@@ -84,7 +84,7 @@ export default function MovieList() {
             alt={movie.title}
             width={100}
             height={100}
-            className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full min-h-[140px] max-h-[180px]"
+            className="object-cover rounded-sm border border-gray-800 shadow-sm w-full h-full min-h-[140px] max-h-[180px] bg-gray-950"
           />
         </div>
         <h2 className="truncate text-gray-300 w-full h-fit text-sm">
