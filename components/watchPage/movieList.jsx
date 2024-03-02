@@ -1,8 +1,7 @@
 "use client";
-import { useContext } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { WatchPageContext } from "@/context/watchPageContext";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { RiDragMove2Fill } from "react-icons/ri";
 import { TinySpinner } from "../loaders";
@@ -15,16 +14,102 @@ import {
   arrayMove,
 } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities";
+import { useUserSession } from "@/lib/session";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import mainStore from "@/components/store/mainStore";
+// import { useQuery } from "@tanstack/react-query";
 
 export default function MovieList() {
-  const {
-    movies,
-    setMovies,
-    removeMovie,
-    removingMovies,
-    updateMovieOrder,
-    reorderingMovies,
-  } = useContext(WatchPageContext);
+  const { session } = useUserSession();
+  const { reload } = mainStore();
+  const [movies, setMovies] = useState([]);
+  const [lastUpdate, setLastUpdate] = useState(Date.now());
+  const [removingMovies, setRemovingMovies] = useState([]);
+  const [reorderingMovies, setReorderingMovies] = useState([]);
+
+  const fetchList = useCallback(async () => {
+    if (session) {
+      try {
+        const response = await fetch("/api/watchPage/getMovieList", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            userId: session.user.id,
+          }),
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          setMovies(data.movies);
+        } else {
+          console.error("Failed to fetch the List");
+          toast.error("Failed to load the the List");
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  }, [session]);
+
+  useEffect(() => {
+    fetchList();
+  }, [fetchList, lastUpdate, reload]);
+
+  const removeMovie = async (movieId) => {
+    setRemovingMovies((prevRemovingMovies) => [...prevRemovingMovies, movieId]);
+    try {
+      const response = await fetch("/api/watchPage/removeMovie", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          movieId: movieId,
+          userId: session.user.id,
+        }),
+      });
+
+      if (response.ok) {
+        setLastUpdate(Date.now());
+        toast.success("Movie removed from the List");
+      } else {
+        toast.error("Failed to remove movie from the List");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred");
+    }
+
+    setRemovingMovies((prevRemovingMovies) =>
+      prevRemovingMovies.filter((id) => id !== movieId)
+    );
+  };
+
+  const updateMovieOrder = async (newMovies, activeMovieId) => {
+    setReorderingMovies((prevReorderingMovies) => [
+      ...prevReorderingMovies,
+      activeMovieId,
+    ]);
+
+    const response = await fetch("/api/watchPage/reorderMovie", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ movies: newMovies, userId: session.user.id }),
+    });
+
+    if (response.ok) {
+      setMovies(newMovies);
+    }
+
+    setReorderingMovies((prevReorderingMovies) =>
+      prevReorderingMovies.filter((id) => id !== activeMovieId)
+    );
+  };
 
   const SortableMovies = ({ movie }) => {
     const {

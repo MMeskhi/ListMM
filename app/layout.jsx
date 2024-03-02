@@ -4,7 +4,6 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import constructMetadata from "@/lib/utils";
 import { NextAuthProvider } from "../lib/providers";
-import { WatchPageProvider } from "@/context/watchPageContext";
 import { ListenPageProvider } from "@/context/listenPageContext";
 import { PlayPageProvider } from "@/context/playPageContext";
 
@@ -26,11 +25,9 @@ export default async function RootLayout({ children }) {
         <NextAuthProvider>
           <Navbar />
           <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-2 max-sm:mt-0 ">
-            <WatchPageProvider>
-              <ListenPageProvider>
-                <PlayPageProvider>{children}</PlayPageProvider>
-              </ListenPageProvider>
-            </WatchPageProvider>
+            <ListenPageProvider>
+              <PlayPageProvider>{children}</PlayPageProvider>
+            </ListenPageProvider>
           </main>
           <Footer />
         </NextAuthProvider>
