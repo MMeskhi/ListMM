@@ -1,20 +1,21 @@
 "use client";
-import { useState, useContext } from "react";
+import { useState } from "react";
+import { useUserSession } from "@/lib/session";
+import { useQueryClient } from "@tanstack/react-query";
 import SearchBar from "../searchBar";
 import SearchResult from "./searchResult";
 import { searchGames } from "../../lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useUserSession } from "@/lib/session";
-import { PlayPageContext } from "@/context/playPageContext";
 
 export default function AddGames() {
-  const [results, setResults] = useState([]);
   const { session } = useUserSession();
-  const { addGame } = useContext(PlayPageContext);
+  const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [addingGames, setAddingGames] = useState([]);
+
+  const queryClient = useQueryClient();
 
   const handleSearch = async (gameName) => {
     setIsLoading(true);
@@ -22,6 +23,36 @@ export default function AddGames() {
     setResults(newResults);
     setIsLoading(false);
     setHasSearched(true);
+  };
+
+  const addGame = async (game) => {
+    try {
+      const response = await fetch("/api/playPage/addGame", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          gameId: game.id,
+          title: game.name,
+          image: game.image,
+          url: game.url,
+          userId: session.user.id,
+        }),
+      });
+
+      if (response.ok) {
+        await queryClient.refetchQueries({
+          queryKey: ["games"],
+        });
+        toast.success("Game added to the List");
+      } else {
+        toast.error("Failed to add game to the List");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred");
+    }
   };
 
   const addGameToList = async (game) => {

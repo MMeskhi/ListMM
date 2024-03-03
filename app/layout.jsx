@@ -4,8 +4,6 @@ import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import constructMetadata from "@/lib/utils";
 import { NextAuthProvider } from "../lib/providers";
-import { ListenPageProvider } from "@/context/listenPageContext";
-import { PlayPageProvider } from "@/context/playPageContext";
 
 const inter = Inter({ weight: "700", subsets: ["latin"] });
 const roboto = Roboto({ weight: "700", subsets: ["latin"] });
@@ -25,9 +23,7 @@ export default async function RootLayout({ children }) {
         <NextAuthProvider>
           <Navbar />
           <main className="container mx-auto max-w-screen-2xl flex-1 h-full max-md:px-2 mt-2 max-sm:mt-0 ">
-            <ListenPageProvider>
-              <PlayPageProvider>{children}</PlayPageProvider>
-            </ListenPageProvider>
+            {children}
           </main>
           <Footer />
         </NextAuthProvider>

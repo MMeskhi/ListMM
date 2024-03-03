@@ -1,20 +1,21 @@
 "use client";
-import { useState, useContext } from "react";
+import { useState } from "react";
+import { useUserSession } from "@/lib/session";
+import { useQueryClient } from "@tanstack/react-query";
 import SearchBar from "../searchBar";
 import SearchResult from "./searchResult";
 import { searchAlbums } from "@/lib/api";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useUserSession } from "@/lib/session";
-import { ListenPageContext } from "@/context/listenPageContext";
 
 export default function AddAlbums() {
-  const [results, setResults] = useState([]);
   const { session } = useUserSession();
-  const { addAlbum } = useContext(ListenPageContext);
+  const [results, setResults] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
   const [addingAlbums, setAddingAlbums] = useState([]);
+
+  const queryClient = useQueryClient();
 
   const handleSearch = async (albumName) => {
     setIsLoading(true);
@@ -22,6 +23,35 @@ export default function AddAlbums() {
     setResults(newResults);
     setIsLoading(false);
     setHasSearched(true);
+  };
+
+  const addAlbum = async (album) => {
+    try {
+      const response = await fetch("/api/listenPage/addAlbum", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          albumId: album.id,
+          title: album.name,
+          image: album.image,
+          userId: session.user.id,
+        }),
+      });
+
+      if (response.ok) {
+        await queryClient.refetchQueries({
+          queryKey: ["albums"],
+        });
+        toast.success("Album added to the List");
+      } else {
+        toast.error("Failed to add album to the List");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("An error occurred");
+    }
   };
 
   const addAlbumToList = async (album) => {
