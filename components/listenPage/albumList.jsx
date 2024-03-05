@@ -96,6 +96,7 @@ export default function AlbumList() {
     });
 
     if (response.ok) {
+      await refetch();
       setAlbums(newAlbums);
     }
 

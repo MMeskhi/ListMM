@@ -96,6 +96,7 @@ export default function MovieList() {
     });
 
     if (response.ok) {
+      await refetch();
       setMovies(newMovies);
     }
 

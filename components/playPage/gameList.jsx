@@ -96,6 +96,7 @@ export default function GameList() {
     });
 
     if (response.ok) {
+      await refetch();
       setGames(newGames);
     }
 
