@@ -12,7 +12,20 @@ export default function Intro() {
           them into the list, and save them for future reference.
         </p>
       </div>
-      <div className="min-w-[544px] h-[306px] bg-gray-950 rounded-sm shadow-md border border-gray-800 max-xl:min-w-[480px] max-xl:h-[270px] max-md:min-w-full max-sm:h-[180px]"></div>
+      <div className="min-w-[544px] bg-gray-950 rounded-sm shadow-md border border-gray-800 max-xl:min-w-[480px] max-xl:h-[270px] max-md:min-w-full max-sm:h-[180px] pointer-events-none">
+        <video
+          width="100%"
+          height="100%"
+          autoPlay
+          loop
+          muted
+          preload="auto"
+          playsInline
+        >
+          <source src="/path/to/video.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
     </>
   );
 }
