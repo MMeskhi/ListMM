@@ -81,12 +81,23 @@ module.exports = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "slide-top": "slide-top 0.2s both ease",
+        "slide-top-slow": "slide-top-slow 0.8s both ease",
         "scale-out": "scale-out 0.3s both ease",
       },
       keyframes: {
         "slide-top": {
           "0%": {
             transform: "translateY(24px)",
+            opacity: 0,
+          },
+          to: {
+            transform: "translateY(0)",
+            opacity: 1,
+          },
+        },
+        "slide-top-slow": {
+          "0%": {
+            transform: "translateY(48px)",
             opacity: 0,
           },
           to: {

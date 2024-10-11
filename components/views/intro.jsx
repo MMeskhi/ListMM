@@ -1,6 +1,6 @@
 export default function Intro() {
   return (
-    <>
+    <div className="flex items-start justify-between gap-10 animate-slide-top mt-10 px-10 max-xl:px-5 max-lg:flex-col max-lg:gap-5 max-sm:px-1">
       <div>
         <h1 className="text-gray-300 text-3xl">Watch Listen Play</h1>
         <p className="text-gray-400 text-base my-1 mb-px w-full max-w-xl">
@@ -26,6 +26,6 @@ export default function Intro() {
           Your browser does not support the video tag.
         </video>
       </div>
-    </>
+    </div>
   );
 }

@@ -13,6 +13,7 @@ import {
   useSortable,
   arrayMove,
 } from "@dnd-kit/sortable";
+import { restrictToParentElement } from "@dnd-kit/modifiers";
 import { CSS } from "@dnd-kit/utilities";
 import { BsFillXCircleFill } from "react-icons/bs";
 import { RiDragMove2Fill } from "react-icons/ri";
@@ -204,7 +205,11 @@ export default function MovieList() {
           initial={{ y: 24, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
         >
-          <DndContext collisionDetection={closestCenter} onDragEnd={onDragEnd}>
+          <DndContext
+            collisionDetection={closestCenter}
+            onDragEnd={onDragEnd}
+            modifiers={[restrictToParentElement]}
+          >
             <SortableContext items={movies} strategy={rectSortingStrategy}>
               {movies &&
                 movies.map((movie) => (
