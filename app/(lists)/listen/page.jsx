@@ -1,5 +1,5 @@
 import { Modal } from "@/components/modal";
-import AlbumList from "@/components/listenPage/albumList";
+import AlbumList from "@/components/views/albumList";
 
 export const metadata = {
   title: "Listen",

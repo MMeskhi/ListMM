@@ -1,5 +1,5 @@
 import { Modal } from "@/components/modal";
-import MovieList from "@/components/watchPage/movieList";
+import MovieList from "@/components/views/movieList";
 
 export const metadata = {
   title: "Watch",

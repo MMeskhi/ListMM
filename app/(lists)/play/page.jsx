@@ -1,5 +1,5 @@
 import { Modal } from "@/components/modal";
-import GameList from "@/components/playPage/gameList";
+import GameList from "@/components/views/gameList";
 
 export const metadata = {
   title: "Play",
