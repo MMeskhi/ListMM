@@ -12,9 +12,9 @@ export default function Intro() {
           them into the list, and save them for future reference.
         </p>
       </div>
-      <div className="min-w-[544px] bg-gray-950 rounded-sm shadow-md border border-gray-800 max-xl:min-w-[480px] max-xl:h-[270px] max-md:min-w-full max-sm:h-[180px] pointer-events-none">
+      <div className="w-[544px] bg-gray-950 rounded-sm shadow-md border border-gray-800 max-xl:min-w-[480px] max-xl:h-[270px] max-md:min-w-full max-sm:h-[180px] pointer-events-none">
         <video
-          width="100%"
+          width="544px"
           height="100%"
           autoPlay
           loop
@@ -22,7 +22,7 @@ export default function Intro() {
           preload="auto"
           playsInline
         >
-          <source src="/path/to/video.mp4" type="video/mp4" />
+          <source src="/ListMMIntro.mp4" type="video/mp4" />
           Your browser does not support the video tag.
         </video>
       </div>
